@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style_menu.css">
+    <link rel="stylesheet" href="./css/style_login.css">
+    <title>B99 | Login</title>
+</head>
+<body>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+    <header>
+        <div class="container">
+            <img class="logo" src="./img/logob99.svg" alt="" />
+            <div class="navbar">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="#">Sobre</a>
+                        <ul>
+                            <li><a href="./sobre.html">Série</a></li>
+                            <li><a href="">Personagens</a></li>
+                            <li><a href="">Desenvolvedor</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./login.html">Login</a></li>
+                    <li><a href="./cadastrar.html">Cadastrar</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="formulario">
+        <div class="cad">
+            <div class="cadastrar">
+                <h4>Cadastre-se</h4>
+                <form action="">
+                    <div class="campos">
+                        <div class="input-group">
+                            <input required="" id="input_nome" type="text" name="text" autocomplete="off" class="input">
+                            <label class="user-label">Nome:</label>
+                        </div>
+                        <div class="input-group">
+                            <input required="" id="input_sobrenome" type="text" name="text" autocomplete="off" class="input">
+                            <label class="user-label">Sobrenome:</label>
+                        </div>
+                    </div>
+                    <div class="campos_2">
+                        <div class="input-group">
+                            <input required="" id="input_nickname" type="text" name="text" autocomplete="off" class="input">
+                            <label class="user-label">Nickname:</label>
+                        </div>
+                        <div class="input-group">
+                            <input required="" id="input_email" type="email" name="email" autocomplete="off" class="input">
+                            <label class="user-label">Email:</label>
+                        </div>
+                        <div class="input-group">
+                            <input required="" id="input_senha" type="password" name="password" autocomplete="off" class="input">
+                            <label class="user-label">Senha:</label>
+                        </div>
+                        <div class="input-group">
+                            <input required="" id="input_confirmar" type="password" name="password" autocomplete="off" class="input">
+                            <label class="user-label">Confirmar senha:</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="btn_cad">
+                    <button onclick="cadastrar()" type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        Desenvolvido por Felipe Dourado, 1ADSC
+      </div>
+</body>
+</html>

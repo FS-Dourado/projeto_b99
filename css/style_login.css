@@ -1,0 +1,110 @@
+header {
+    position: relative;
+    width: 100%;
+    background-color: black;
+    opacity: 100%;
+    height: auto;
+    display: flex;
+    transition: 0.6s;
+}
+
+.container .img_cadastrar{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6%;
+    
+}
+
+.img_cadastrar img {
+    width: 50%;
+}
+
+.formulario {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario .cad {
+    width: 100%;
+    border: 2px solid #FFC700;
+    border-radius: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cad h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFC700;
+    font-weight: bold;
+}
+
+.cad .campos {
+    display: flex;
+}
+ .cad .campos_2 .input{
+    width: 100%;
+ }
+
+.cad .btn_cad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cad button {
+    width: 25%;
+    font-weight: bold;
+    font-size: 17px;
+    background-color: #FFC700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+.input-group {
+    position: relative;
+}
+
+.input {
+    margin-top: 2%;
+    border: solid 1.5px #9e9e9e;
+    border-radius: 1rem;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #f5f5f5;
+    transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-label {
+    margin-top: 2%;
+    position: absolute;
+    left: 15px;
+    color: #e8e8e8;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus,
+input:valid {
+    outline: none;
+    border: 1.5px solid #FFC700;
+}
+
+.input:focus~label,
+input:valid~label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: #282828;
+    padding: 0 .2em;
+    color: #FFC700;
+}
+

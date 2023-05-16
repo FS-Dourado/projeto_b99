@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/style_menu.css" />
+  <link rel="stylesheet" href="./css/style_index.css" />
+  <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>B99 | Home</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    window.addEventListener("scroll", function () {
+      var header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+  <header>
+    <div class="container">
+      <img class="logo" src="./img/logob99.svg" alt="" />
+      <div class="navbar">
+      <ul >
+        <li><a href="">Home</a></li>
+        <li><a href="#">Sobre</a>
+          <ul>
+            <li><a href="./sobre.html">Série</a></li>
+            <li><a href="">Personagens</a></li>
+            <li><a href="">Desenvolvedor</a></li>
+          </ul>
+        </li>
+        <li><a href="./login.html">Login</a></li>
+        <li><a href="./cadastrar.html">Cadastrar</a></li>
+      </ul>
+    </div>
+    </div>
+  </header>
+  <div class="banner">
+    <div class="container">
+      <img class="img_banner" src="./img/banner1.svg" alt="" />
+    </div>
+  </div>
+  <div class="av_serie">
+    <h4>Avaliação sobre a série</h4>
+  </div>
+  <div class="avaliacao">
+    <div class="container">
+      <div class="num">
+        <h4>Avaliação</h4>
+        <div class="num_avaliacao">
+          <p>4,9</p>
+        </div>
+      </div>
+      <div class="grafico">
+        
+        <div id="container" style="width: 500px; height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="resumo_serie">
+    <div class="container">
+      <div class="img_resumo">
+        <img src="./img/capa.svg" alt="">
+      </div>
+      <div class="parte_resumo">
+        <h4>Resumo sobre a série</h4>
+        <div class="texto_resumo">
+          <p>
+            Brooklyn Nine-Nine é uma série de comédia policial que segue o cotidiano dos detetives da 99ª delegacia de polícia do Brooklyn, Nova York. A série apresenta uma mistura única de comédia e drama, com personagens peculiares e casos intrigantes que mantêm os telespectadores entretidos ao longo de suas oito temporadas.
+            <br>
+            A série é liderada pelo detetive Jake Peralta, interpretado por Andy Samberg, um detetive talentoso e desorganizado que tem um senso de humor sarcástico e muitas vezes infantil. 
+            A equipe de Jake inclui o capitão Raymond Holt, interpretada por Andre Braugher, um líder sério e disciplinado que luta para se afirmar em um ambiente dominado por pessoas preconceituosas. Outros membros da equipe incluem a detetive Rosa Diaz, interpretada por Stephanie Beatriz, uma colega de trabalho durona e misteriosa, o sargento Terry Jeffords, interpretado por Terry Crews, um pai de família preocupado com sua saúde e o detetive Charles Boyle, interpretado por Joe Lo Truglio, um colega de trabalho leal, mas desajeitado...
+          </p>
+        </div>
+        <div class="texto_resumo">
+        <a href="./sobre.html"><button> Saiba mais</button></a>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="resumo">
+    <div class="container">
+      <div class="img_resumo">
+        <img src="./img/capa.svg" alt="">
+      </div>
+      <div class="parte_resumo">
+        <h4>Quiz</h4>
+        <div class="texto_resumo">
+          <p>
+            Brooklyn Nine-Nine é uma série de comédia policial que segue o cotidiano dos detetives da 99ª delegacia de polícia do Brooklyn, Nova York. A série apresenta uma mistura única de comédia e drama, com personagens peculiares e casos intrigantes que mantêm os telespectadores entretidos ao longo de suas oito temporadas.
+            <br>
+            A série é liderada pelo detetive Jake Peralta, interpretado por Andy Samberg, um detetive talentoso e desorganizado que tem um senso de humor sarcástico e muitas vezes infantil. 
+            A equipe de Jake inclui o capitão Raymond Holt, interpretada por Andre Braugher, uma líder séria e disciplinada que luta para se afirmar em um ambiente dominado por homens. Outros membros da equipe incluem a detetive Rosa Diaz, interpretada por Stephanie Beatriz, uma colega de trabalho durona e misteriosa, o sargento Terry Jeffords, interpretado por Terry Crews, um pai de família preocupado com sua saúde e o detetive Charles Boyle, interpretado por Joe Lo Truglio, um colega de trabalho leal, mas desajeitado...
+          </p>
+        </div>
+        <div class="texto_resumo">
+          <a href="./cadastrar.html"><button>Cadastrar</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="resumo">
+    <div class="container">
+      <div class="parte_ranking">
+        <h4>Ranking</h4>
+        <div class="texto_ranking">
+          <p>
+            Brooklyn Nine-Nine é uma série de comédia policial que segue o cotidiano dos detetives da 99ª delegacia de polícia do Brooklyn, Nova York. A série apresenta uma mistura única de comédia e drama, com personagens peculiares e casos intrigantes que mantêm os telespectadores entretidos ao longo de suas oito temporadas.
+            <br>
+            A série é liderada pelo detetive Jake Peralta, interpretado por Andy Samberg, um detetive talentoso e desorganizado que tem um senso de humor sarcástico e muitas vezes infantil. 
+            A equipe de Jake inclui o capitão Raymond Holt, interpretada por Andre Braugher, uma líder séria e disciplinada que luta para se afirmar em um ambiente dominado por homens. Outros membros da equipe incluem a detetive Rosa Diaz, interpretada por Stephanie Beatriz, uma colega de trabalho durona e misteriosa, o sargento Terry Jeffords, interpretado por Terry Crews, um pai de família preocupado com sua saúde e o detetive Charles Boyle, interpretado por Joe Lo Truglio, um colega de trabalho leal, mas desajeitado...
+          </p>
+        </div>
+      </div>
+      <div class="img_ranking">
+        <img src="./img/resumo.svg" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="resumo">
+    <div class="container">
+      <div class="img_resumo">
+        <img src="./img/resumo.svg" alt="">
+      </div>
+      <div class="parte_resumo">
+        <h4>Votação</h4>
+        <div class="texto_resumo">
+          <p>
+            Brooklyn Nine-Nine é uma série de comédia policial que segue o cotidiano dos detetives da 99ª delegacia de polícia do Brooklyn, Nova York. A série apresenta uma mistura única de comédia e drama, com personagens peculiares e casos intrigantes que mantêm os telespectadores entretidos ao longo de suas oito temporadas.
+            <br>
+            A série é liderada pelo detetive Jake Peralta, interpretado por Andy Samberg, um detetive talentoso e desorganizado que tem um senso de humor sarcástico e muitas vezes infantil. 
+            A equipe de Jake inclui o capitão Raymond Holt, interpretada por Andre Braugher, uma líder séria e disciplinada que luta para se afirmar em um ambiente dominado por homens. Outros membros da equipe incluem a detetive Rosa Diaz, interpretada por Stephanie Beatriz, uma colega de trabalho durona e misteriosa, o sargento Terry Jeffords, interpretado por Terry Crews, um pai de família preocupado com sua saúde e o detetive Charles Boyle, interpretado por Joe Lo Truglio, um colega de trabalho leal, mas desajeitado...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="resumo">
+    <div class="container">
+      <div class="parte_ranking">
+        <h4>Sugestão</h4>
+        <div class="texto_ranking">
+          <p>
+            Brooklyn Nine-Nine é uma série de comédia policial que segue o cotidiano dos detetives da 99ª delegacia de polícia do Brooklyn, Nova York. A série apresenta uma mistura única de comédia e drama, com personagens peculiares e casos intrigantes que mantêm os telespectadores entretidos ao longo de suas oito temporadas.
+            <br>
+            A série é liderada pelo detetive Jake Peralta, interpretado por Andy Samberg, um detetive talentoso e desorganizado que tem um senso de humor sarcástico e muitas vezes infantil. 
+            A equipe de Jake inclui o capitão Raymond Holt, interpretada por Andre Braugher, uma líder séria e disciplinada que luta para se afirmar em um ambiente dominado por homens. Outros membros da equipe incluem a detetive Rosa Diaz, interpretada por Stephanie Beatriz, uma colega de trabalho durona e misteriosa, o sargento Terry Jeffords, interpretado por Terry Crews, um pai de família preocupado com sua saúde e o detetive Charles Boyle, interpretado por Joe Lo Truglio, um colega de trabalho leal, mas desajeitado...
+          </p>
+        </div>
+      </div>
+      <div class="img_ranking">
+        <img src="./img/resumo.svg" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    Desenvolvido por Felipe Dourado, 1ADSC
+  </div>
+</body>
+
+</html>
+<script>
+
+  /*Gráfico de avaliação*//*
+  const labels = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      backgroundColor: 'rgb(255,0,0)',
+      borderColor: 'rgb(255,0,0)',
+      data: [15, 4, 2, 1, 0],
+      label: 'Estrelas'
+    },
+    ]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  )*/
+
+  // create data
+var data = [
+  ["5", 10],
+  ["4", 8],
+  ["3", 4],
+  ["2", 1],
+  ["1", 1]
+];
+
+// create a chart
+chart = anychart.bar();
+
+// create a bar series and set the data
+var series = chart.bar(data);
+
+// set the container id
+chart.container("container");
+
+// initiate drawing the chart
+chart.draw();
+
+</script>
