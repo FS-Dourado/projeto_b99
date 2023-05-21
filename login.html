@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="./css/style_login.css">
     <title>B99 | Login</title>
 </head>
+
 <body>
     <script type="text/javascript">
         window.addEventListener("scroll", function () {
@@ -34,49 +36,27 @@
             </div>
         </div>
     </header>
-    <div class="formulario">
-        <div class="cad">
-            <div class="cadastrar">
-                <h4>Cadastre-se</h4>
-                <form action="">
-                    <div class="campos">
-                        <div class="input-group">
-                            <input required="" id="input_nome" type="text" name="text" autocomplete="off" class="input">
-                            <label class="user-label">Nome:</label>
-                        </div>
-                        <div class="input-group">
-                            <input required="" id="input_sobrenome" type="text" name="text" autocomplete="off" class="input">
-                            <label class="user-label">Sobrenome:</label>
-                        </div>
-                    </div>
-                    <div class="campos_2">
-                        <div class="input-group">
-                            <input required="" id="input_nickname" type="text" name="text" autocomplete="off" class="input">
-                            <label class="user-label">Nickname:</label>
-                        </div>
-                        <div class="input-group">
-                            <input required="" id="input_email" type="email" name="email" autocomplete="off" class="input">
-                            <label class="user-label">Email:</label>
-                        </div>
-                        <div class="input-group">
-                            <input required="" id="input_senha" type="password" name="password" autocomplete="off" class="input">
-                            <label class="user-label">Senha:</label>
-                        </div>
-                        <div class="input-group">
-                            <input required="" id="input_confirmar" type="password" name="password" autocomplete="off" class="input">
-                            <label class="user-label">Confirmar senha:</label>
-                        </div>
-                    </div>
-                </form>
-                <div class="btn_cad">
-                    <button onclick="cadastrar()" type="submit">Cadastrar</button>
-                </div>
-            </div>
-        </div>
+    <div class="conteudo">
+        <div class="container">
+            <form class="form">
+                <p class="title">Login</p>
+                <label>
+                    <input id="email" required="" placeholder="" type="email" class="input">
+                    <span>Email</span>
+                </label>
+                <label>
+                    <input id="senha" required="" placeholder="" type="password" class="input">
+                    <span>Senha</span>
+                </label>
 
+                <button class="submit">Login</button>
+                <p class="signin">Não tem uma conta? <a href="./cadastrar.html">Cadastrar</a> </p>
+            </form>
+        </div>
     </div>
     <div class="footer">
         Desenvolvido por Felipe Dourado, 1ADSC
-      </div>
+    </div>
 </body>
+
 </html>

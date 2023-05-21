@@ -1,59 +1,59 @@
-.container{
-    display: flex;
-    margin: auto;
-    width: 90%;
+.container {
+  display: flex;
+  margin: auto;
+  width: 90%;
 }
 
-.banner .container{
-    width: 100%;
+.banner .container {
+  width: 100%;
 }
 
 .container img {
-    width: 100%;
+  width: 100%;
 
 }
 
 .av_serie {
-    color: #FFC700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #282828;
-    font-weight: bold;
-    font-size: 35px;
+  color: #FFC700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #282828;
+  font-weight: bold;
+  font-size: 35px;
 }
 
 .av_serie .h4 {
-    display: flex;
-    
+  display: flex;
+
 }
 
 .avaliacao {
-    width: 100%;
-    background-color: #282828;
-    position: relative;
+  width: 100%;
+  background-color: #282828;
+  position: relative;
 }
 
 .avaliacao .container {
-    width: 90%;
-    display: flex;
-    margin: auto;
+  width: 90%;
+  display: flex;
+  margin: auto;
 }
 
 .container .num {
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: block;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: block;
 }
 
 .num h4 {
-    font-size: 20px;
-    color: #FFC700;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 15%;
+  font-size: 20px;
+  color: #FFC700;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 15%;
 }
 
 .num .num_avaliacao {
@@ -64,36 +64,42 @@
   font-size: 50px;
   color: #FFC700;
 }
+
 .estrelas {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15%;
 }
 
 .estrelas button {
-    display: flex;
-    width: 15%;
-    flex-direction: row;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+  display: flex;
+  width: 15%;
+  flex-direction: row;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .estrelas button:hover {
-    background-color: #FFC700;
-    transition: 0.6;
+  background-color: #FFC700;
+  transition: 0.6;
 }
 
 .container .grafico {
-    width: 70%;
-    margin-left: 3%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 70%;
+  margin-left: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
+.grafico #container {
+  background-color: #FFC700;
+  border: solid 2px yellowgreen;
+  width: 500px;
+  height: 400px;
+}
 
 .resumo_serie {
   background-color: #5F5E5B;
@@ -105,75 +111,76 @@
 }
 
 .resumo {
-    background-color: #282828;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5%;
+  background-color: #282828;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
 }
 
 .resumo .container {
-    display: flex;
-    width: 90%;
-    margin: auto;
+  display: flex;
+  width: 90%;
+  margin: auto;
 }
 
 .container .img_resumo {
-    margin-top: 5%;
-    width: 25%;
-    margin-left: 5%;
+  margin-top: 5%;
+  width: 25%;
+  margin-left: 5%;
 }
 
 .container h4 {
-    color: #FFC700;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 25px;
+  color: #FFC700;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
 }
 
 .container .parte_resumo {
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom: 5%;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 5%;
 }
 
 .parte_resumo h4 {
   margin-left: 12%;
 }
+
 .container .texto_resumo {
-    width: 100%;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-      
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
 }
 
 .texto_resumo p {
-    width: 70%;
-    color: white;
-    text-align: justify;
-    margin-right: 10%;
+  width: 70%;
+  color: white;
+  text-align: justify;
+  margin-right: 10%;
 }
 
 .parte_resumo a {
-    text-decoration: none;
-    width: 20%;
+  text-decoration: none;
+  width: 20%;
 }
 
 .parte_resumo button {
-    background-color: #FFC700;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    height: 25px;
-    align-items: center;
-    margin-right: 2%;
+  background-color: #FFC700;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  height: 25px;
+  align-items: center;
+  margin-right: 2%;
 }
 
 .container .img_ranking {
@@ -196,7 +203,7 @@
   display: flex;
   justify-content: left;
   align-items: center;
-    
+
 }
 
 .texto_ranking p {
@@ -209,86 +216,86 @@
 
 
 .rating {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 0.3rem;
-    --stroke: #666;
-    --fill: #ffc73a;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.3rem;
+  --stroke: #666;
+  --fill: #ffc73a;
+}
+
+.rating input {
+  appearance: unset;
+}
+
+.rating label {
+  cursor: pointer;
+}
+
+.rating svg {
+  width: 3rem;
+  height: 3rem;
+  overflow: visible;
+  fill: transparent;
+  stroke: var(--stroke);
+  stroke-linejoin: bevel;
+  stroke-dasharray: 12;
+  animation: idle 4s linear infinite;
+  transition: stroke 0.2s, fill 0.5s;
+}
+
+@keyframes idle {
+  from {
+    stroke-dashoffset: 24;
   }
-  
-  .rating input {
-    appearance: unset;
-  }
-  
-  .rating label {
-    cursor: pointer;
-  }
-  
-  .rating svg {
-    width: 3rem;
-    height: 3rem;
-    overflow: visible;
-    fill: transparent;
-    stroke: var(--stroke);
-    stroke-linejoin: bevel;
-    stroke-dasharray: 12;
-    animation: idle 4s linear infinite;
-    transition: stroke 0.2s, fill 0.5s;
-  }
-  
-  @keyframes idle {
-    from {
-      stroke-dashoffset: 24;
-    }
-  }
-  
-  .rating label:hover svg {
-    stroke: var(--fill);
-  }
-  
-  .rating input:checked ~ label svg {
-    transition: 0s;
-    animation: idle 4s linear infinite, yippee 0.75s backwards;
+}
+
+.rating label:hover svg {
+  stroke: var(--fill);
+}
+
+.rating input:checked~label svg {
+  transition: 0s;
+  animation: idle 4s linear infinite, yippee 0.75s backwards;
+  fill: var(--fill);
+  stroke: var(--fill);
+  stroke-opacity: 0;
+  stroke-dasharray: 0;
+  stroke-linejoin: miter;
+  stroke-width: 8px;
+}
+
+@keyframes yippee {
+  0% {
+    transform: scale(1);
     fill: var(--fill);
+    fill-opacity: 0;
+    stroke-opacity: 1;
+    stroke: var(--stroke);
+    stroke-dasharray: 10;
+    stroke-width: 1px;
+    stroke-linejoin: bevel;
+  }
+
+  30% {
+    transform: scale(0);
+    fill: var(--fill);
+    fill-opacity: 0;
+    stroke-opacity: 1;
+    stroke: var(--stroke);
+    stroke-dasharray: 10;
+    stroke-width: 1px;
+    stroke-linejoin: bevel;
+  }
+
+  30.1% {
     stroke: var(--fill);
-    stroke-opacity: 0;
     stroke-dasharray: 0;
     stroke-linejoin: miter;
     stroke-width: 8px;
   }
-  
-  @keyframes yippee {
-    0% {
-      transform: scale(1);
-      fill: var(--fill);
-      fill-opacity: 0;
-      stroke-opacity: 1;
-      stroke: var(--stroke);
-      stroke-dasharray: 10;
-      stroke-width: 1px;
-      stroke-linejoin: bevel;
-    }
-  
-    30% {
-      transform: scale(0);
-      fill: var(--fill);
-      fill-opacity: 0;
-      stroke-opacity: 1;
-      stroke: var(--stroke);
-      stroke-dasharray: 10;
-      stroke-width: 1px;
-      stroke-linejoin: bevel;
-    }
-  
-    30.1% {
-      stroke: var(--fill);
-      stroke-dasharray: 0;
-      stroke-linejoin: miter;
-      stroke-width: 8px;
-    }
-  
-    60% {
-      transform: scale(1.2);
-      fill: var(--fill);
-    }
+
+  60% {
+    transform: scale(1.2);
+    fill: var(--fill);
   }
+}

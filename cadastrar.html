@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style_menu.css">
     <link rel="stylesheet" href="./css/style_cadastrar.css">
+    <script src="./js/funcoes.js"></script>
     <title>B99 | Cadastrar</title>
 </head>
 
@@ -37,49 +38,54 @@
         </div>
     </header>
     <div class="conteudo">
-        <div class="container">
-            <div class="img_cadastrar">
-                <img src="./img/resumo.svg" alt="">
-            </div>
-            
-            <form class="form">
+        <div class="container"> 
+            <div class="form">
                 <p class="title">Cadastrar-se </p>
                     <div class="flex">
                     <label>
-                        <input id="nome" required="" placeholder="" type="text" class="input">
+                        <input id="nome_input" required="" placeholder="" type="text" class="input">
                         <span>Nome</span>
                     </label>
             
                     <label>
-                        <input id="sobrenome" required="" placeholder="" type="text" class="input">
+                        <input id="sobrenome_input" required="" placeholder="" type="text" class="input">
                         <span>Sobrenome</span>
                     </label>
                 </div>  
                 
                 <label>
-                    <input id="nickname" required="" placeholder="" type="email" class="input">
+                    <input id="nickname_input" required="" placeholder="" type="text" class="input">
                     <span>Nickname</span>
                 </label> 
                 <label>
-                    <input id="email" required="" placeholder="" type="email" class="input">
+                    <input id="email_input" required="" placeholder="" type="email" class="input">
                     <span>Email</span>
                 </label> 
                     
                 <label>
-                    <input id="senha" required="" placeholder="" type="password" class="input">
+                    <input id="senha_input" required="" placeholder="" type="password" class="input">
                     <span>Senha</span>
                 </label>
                 <label>
-                    <input id="confirmar_senha" required="" placeholder="" type="password" class="input">
+                    <input id="confirmar_senha_input" required="" placeholder="" type="password" class="input">
                     <span>Confirmar senha</span>
                 </label>
                 <label>
-                    <input id="personagem_fav" required="" placeholder="" type="password" class="input">
-                    <span>Personagem favorito</span>
+                    <select name="" id="personagem_fav">
+                        <option value="">---</option>
+                        <option value="amy">Amy Santiago</option>
+                        <option value="boyle">Charles Boyle</option>
+                        <option value="peralta">Jake Peralta</option>
+                        <option value="holt">Raymond Holt</option>
+                        <option value="rosa">Rosa Dias</option>
+                        <option value="terry">Terry Jeford</option>
+                    </select>
                 </label>
                 <button class="submit">Cadastrar</button>
                 <p class="signin">Já tem uma conta? <a href="./login.html">Login</a> </p>
-            </form>    
+
+                
+            </div>  
         </div>
     </div>
     </div>

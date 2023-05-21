@@ -8,22 +8,33 @@ header {
     transition: 0.6s;
 }
 
+.conteudo {
+  background-image: url(../img/cadastrar.svg);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .container .img_cadastrar{
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 6%;
-    
+    border: solid 2px black;
 }
 
 .img_cadastrar img {
-    width: 50%;
+    width: 100%;
+
 }
 
 .form {
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -103,6 +114,26 @@ header {
     border-radius: 10px;
   }
   
+  .form select {
+    position: relative;
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+
+  .form select option {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+   
+  }
+
   .form label .input + span {
     position: absolute;
     left: 10px;
@@ -129,9 +160,11 @@ header {
   }
   
   .submit {
+    width: 100%;
+    margin-top: 2%;
     border: none;
     outline: none;
-    background-color: royalblue;
+    background-color: #FFC700;
     padding: 10px;
     border-radius: 10px;
     color: #fff;
@@ -140,7 +173,7 @@ header {
   }
   
   .submit:hover {
-    background-color: rgb(56, 90, 194);
+    background-color: rgb(177, 139, 4)
   }
   
   @keyframes pulse {

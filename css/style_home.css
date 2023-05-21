@@ -1,0 +1,280 @@
+.conteudo{
+    display: flex;
+    flex-direction: column;
+}
+
+.avaliacao{
+    width: 100%;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.avaliar{
+    width: 40%;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   justify-content: space-between;
+}
+
+
+.frase {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3%;
+    color: #FFC700;
+}
+.rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px white;
+    gap: 0.3rem;
+    --stroke: white;
+    --fill: #ffc73a;
+  }
+  
+  .rating input {
+    appearance: unset;
+  }
+  
+  .rating label {
+    cursor: pointer;
+  }
+  
+  .rating svg {
+    width: 3rem;
+    height: 3rem;
+    overflow: visible;
+    fill: transparent;
+    stroke: var(--stroke);
+    stroke-linejoin: bevel;
+    stroke-dasharray: 12;
+    animation: idle 4s linear infinite;
+    transition: stroke 0.2s, fill 0.5s;
+  }
+  
+  @keyframes idle {
+    from {
+      stroke-dashoffset: 24;
+    }
+  }
+  
+  .rating label:hover svg {
+    stroke: var(--fill);
+  }
+  
+  .rating input:checked ~ label svg {
+    transition: 0s;
+    animation: idle 4s linear infinite, yippee 0.75s backwards;
+    fill: var(--fill);
+    stroke: var(--fill);
+    stroke-opacity: 0;
+    stroke-dasharray: 0;
+    stroke-linejoin: miter;
+    stroke-width: 8px;
+  }
+  
+  @keyframes yippee {
+    0% {
+      transform: scale(1);
+      fill: var(--fill);
+      fill-opacity: 0;
+      stroke-opacity: 1;
+      stroke: var(--stroke);
+      stroke-dasharray: 10;
+      stroke-width: 1px;
+      stroke-linejoin: bevel;
+    }
+  
+    30% {
+      transform: scale(0);
+      fill: var(--fill);
+      fill-opacity: 0;
+      stroke-opacity: 1;
+      stroke: var(--stroke);
+      stroke-dasharray: 10;
+      stroke-width: 1px;
+      stroke-linejoin: bevel;
+    }
+  
+    30.1% {
+      stroke: var(--fill);
+      stroke-dasharray: 0;
+      stroke-linejoin: miter;
+      stroke-width: 8px;
+    }
+  
+    60% {
+      transform: scale(1.2);
+      fill: var(--fill);
+    }
+  }
+
+.avaliar button{
+    border: none;
+    border-radius: 8%;
+    background-color: #FFC700;
+    margin-bottom: 5%;
+    width: 15%;
+}
+.grafico{
+    width: 50%;
+    border: solid 2px white;
+}
+
+
+
+.home{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+
+.home .metacritic{
+    display: flex;
+    flex-direction: column;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 5%;
+    margin-left: 10%;
+    color: wheat;
+    width: 35%;
+}
+
+.home .rotten{
+    display: flex;
+    flex-direction: column;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 5%;
+    margin-left: 8%;
+    color: wheat;
+    width: 40%;
+}
+
+.metacritic img {
+    width: 10%;
+}
+
+.rotten img {
+    width: 8%;
+}
+
+.metacritic .divisoria {
+    border-bottom: solid 2px white;
+    padding-bottom: 4%;
+    padding-top: 3%;
+    display: flex;
+}
+
+.rotten .divisoria {
+    border-bottom: solid 2px white;
+    padding-bottom: 4%;
+    padding-top: 3%;
+    display: flex;
+}
+
+.divisoria .nota{
+    border: 2px solid black;
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: green;
+}
+
+.nota_tomatoes img{
+    width: 40%;
+}
+
+.divisoria .nota2{
+    border: 2px solid black;
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 3%;
+    font-size: 25px;
+    background-color: green;
+    font-weight: bold;
+}
+
+.nota2_tomatoes img{
+    width: 40%;
+}
+.divisoria .nota_tomatoes{
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 3%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.divisoria .nota2_tomatoes{
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 3%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.metacritic .nome{
+    font-size: 25px;
+    padding-bottom: 3%;
+    border-bottom: solid 2px white;
+    display: flex;
+    align-items: center;
+}
+
+.metacritic .titulo{
+    font-size: 15px;
+    width: 60%;
+    text-align: justify;
+}
+
+.rotten .nome{
+    font-size: 25px;
+    padding-bottom: 3%;
+    border-bottom: solid 2px white;
+    display: flex;
+    align-items: center;
+}
+
+.rotten .titulo{
+    font-size: 15px;
+    width: 60%;
+    text-align: justify;
+}
+
+.classificacao{
+    display: flex;
+    align-items: center;
+}
+.classificacao img{
+    width: 10%;
+}
+
+.classificacao span{
+    font-size: 20px;
+    
+    font-weight: bold;
+}

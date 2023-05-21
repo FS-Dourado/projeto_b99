@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/style_menu_home.css" />
+  <link rel="stylesheet" href="./css/style_home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>B99 | Home</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    window.addEventListener("scroll", function () {
+      var header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+  <div class="conteudo">
+    <nav>
+      <ul>
+        <li>
+          <a href="">
+            <img src="./img/logob99.svg" alt="">
+            <span class="nav-item"></span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-user"></i>
+            <span class="nav-item">Perfil</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-trophy"></i>
+            <span class="nav-item">Quiz</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-trophy"></i>
+            <span class="nav-item">Ranking</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-check-to-slot"></i>
+            <span class="nav-item">Votação</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-question-circle"></i>
+            <span class="nav-item">Sugestão</span>
+          </a>
+        </li>
+        <li>
+          <a href="" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log Out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="avaliacao">
+      <div class="avaliar">
+        <div class="frase">
+          <h4>Avaliar a série</h4>
+        </div>
+        <div class="rating">
+          <input value="star-1" name="star-radio" id="star-1" type="radio">
+          <label for="star-1">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
+              <path
+                d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                pathLength="360"></path>
+            </svg>
+          </label>
+          <input value="star-1" name="star-radio" id="star-2" type="radio">
+          <label for="star-2">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
+              <path
+                d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                pathLength="360"></path>
+            </svg>
+          </label>
+          <input value="star-1" name="star-radio" id="star-3" type="radio">
+          <label for="star-3">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
+              <path
+                d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                pathLength="360"></path>
+            </svg>
+          </label>
+          <input value="star-1" name="star-radio" id="star-4" type="radio">
+          <label for="star-4">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
+              <path
+                d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                pathLength="360"></path>
+            </svg>
+          </label>
+          <input value="star-1" name="star-radio" id="star-5" type="radio">
+          <label for="star-5">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
+              <path
+                d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                pathLength="360"></path>
+            </svg>
+          </label>
+        </div>
+        <button onclick="avaliar()">Avaliar</button>
+      </div>
+      <div class="grafico">
+        <div">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="home">
+      <div class="metacritic">
+        <div class="nome">
+          <img src="./img/metascore.svg" alt="">
+          Metacritic
+        </div>
+        <div class="divisoria">
+          <div class="titulo">METASCORE <br>
+            Comentários geralmente favoráveis com base em 53 comentários críticos.
+          </div>
+          <div class="nota">
+            78
+          </div>
+        </div>
+        <div class="divisoria">
+          <div class="titulo">USERSCORE <br>
+            Aclamação universal com base em 162 avaliações.
+          </div>
+          <div class="nota2">
+            8.6
+          </div>
+        </div>
+      </div>
+
+      <div class="rotten">
+        <div class="nome">
+          <img src="./img/tomatoes.svg" alt="">
+          Roteen Tomatoes
+        </div>
+        <div class="divisoria">
+          <div class="titulo">AVERAGE TOMATOMETER <br>
+            Nota com base nos especialistas tomatometer
+          </div>
+          <div class="nota_tomatoes">
+            <img src="./img/tomatoes.svg" alt=""> 78
+          </div>
+        </div>
+        <div class="divisoria">
+          <div class="titulo">AVERAGE AUDIENCE SCORE<br>
+            Nota com base na audiencia do rotten tomatoes
+          </div>
+          <div class="nota2_tomatoes">
+            <img src="./img/pipoca.svg" alt=""> 8.6
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  /*Gráfico de avaliação*/
+  const labels = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      backgroundColor: 'rgb(255,0,0)',
+      borderColor: 'rgb(255,0,0)',
+      data: [15, 4, 2, 1, 0],
+      label: 'Estrelas'
+    },
+    ]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  )
+</script>
