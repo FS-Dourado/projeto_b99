@@ -35,7 +35,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="./perfil.html">
             <i class="fas fa-user"></i>
             <span class="nav-item">Perfil</span>
           </a>
@@ -122,7 +122,12 @@
         <button onclick="avaliar()">Avaliar</button>
       </div>
       <div class="grafico">
-        <div">
+        <div class="notas_avaliacao">
+          <div class="notas">Notas</div>
+          <div class="num">4.9</div>
+          <div class="num_qtd">Avaliado por 240 usuários</div>
+        </div>
+        <div class="grafico_serie">
           <canvas id="myChart"></canvas>
         </div>
       </div>
@@ -161,7 +166,7 @@
             Nota com base nos especialistas tomatometer
           </div>
           <div class="nota_tomatoes">
-            <img src="./img/tomatoes.svg" alt=""> 78
+            <img src="./img/tomatoes.svg" alt=""> 95%
           </div>
         </div>
         <div class="divisoria">
@@ -169,7 +174,7 @@
             Nota com base na audiencia do rotten tomatoes
           </div>
           <div class="nota2_tomatoes">
-            <img src="./img/pipoca.svg" alt=""> 8.6
+            <img src="./img/pipoca.svg" alt=""> 87%
           </div>
         </div>
       </div>
@@ -195,7 +200,7 @@
       backgroundColor: 'rgb(255,0,0)',
       borderColor: 'rgb(255,0,0)',
       data: [15, 4, 2, 1, 0],
-      label: 'Estrelas'
+      label: 'Avaliação em estrelas'
     },
     ]
   };
