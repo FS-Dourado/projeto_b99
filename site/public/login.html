@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style_menu.css">
+    <link rel="stylesheet" href="./css/style_login.css">
+    <script src="./js/funcoes.js"></script>
+    <title>B99 | Login</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+    <header>
+        <div class="container">
+            <img class="logo" src="./img/logob99.svg" alt="" />
+            <div class="navbar">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./sobre.html">Sobre</a>
+                        <ul>
+                            <li><a href="./sobre.html#sobre">Série</a></li>
+                            <li><a href="./sobre.html#personagens">Personagens</a></li>
+                            <li><a href="./sobre.html#desenvolvedor">Desenvolvedor</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./login.html">Login</a></li>
+                    <li><a href="./cadastrar.html">Cadastrar</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="conteudo">
+        <div class="container">
+            <form class="form">
+                <p class="title">Login</p>
+                <label>
+                    <input id="email_input" required="" placeholder="" type="email" class="input">
+                    <span>Email</span>
+                </label>
+                <label>
+                    <input id="senha_input" required="" placeholder="" type="password" class="input">
+                    <span>Senha</span>
+                </label>
+
+                <button onclick="entrar()" class="submit">Login</button>
+                <p class="signin">Não tem uma conta? <a href="./cadastrar.html">Cadastrar</a> </p>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        Desenvolvido por Felipe Dourado, 1ADSC
+    </div>
+</body>
+
+</html>
+<script>
+  function entrar() {
+       
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+           
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+           
+            return false;
+        }
+        else {
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./home.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+        }
+
+       
+
+        return false;
+    }
+
+   
+</script>
