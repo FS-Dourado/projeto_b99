@@ -108,18 +108,34 @@ header {
     justify-content: center;
 }
 
+button{
+    border: none;
+}
 .card {
     width: 15%;
     height: 254px;
     border-radius: 30px;
-    background: #212121;
+    background: transparent;
     margin-left: 5%;
     box-shadow: 15px 15px 30px rgb(25, 25, 25),
                 -15px -15px 30px rgb(60, 60, 60);
-    
+    cursor: pointer;
    }
 
 .card img{
     width: 100%;
     border-radius: 7px;
+}
+
+.w3-container{
+    display: flex;
+}
+
+.w3-container img{
+    width: 80%;
+    padding-top: 2%;
+}
+
+.w3-container .texto_modal{
+    text-align: justify;   
 }

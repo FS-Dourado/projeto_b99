@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/style_perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/funcoes.js"></script>
     <title>B99 | Perfil</title>
 </head>
 
@@ -78,8 +79,8 @@
                     <img src="./img/Jake.svg">
                 </div>
                 <div class="info_nome">
-                    <p>d0ur4d0_</p>
-                    <p>Felipe Dourado</p>
+                    <span id="b_usuario">usuário</span>
+                    <span id="b_nickname">nickname</span>
                 </div>
                 <div class="editar">
                     <button>Editar Perfil</button>
@@ -89,8 +90,10 @@
                 <div class="votacao">
                     <div class="personagem">
                         <h4>Personagem favorito</h4>
-                        <p>Jake Peralta</p>
-                        <img src="./img/jake.svg" alt="">
+                        <span id="b_personagem">
+                            <p>--</p>
+                            
+                        </span>
                     </div>
                     <div class="episodio">
                         <h4>Episódio Favorito</h4>
@@ -167,3 +170,36 @@
 </body>
 
 </html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
+    b_personagem.innerHTML = sessionStorage.PERSONAGEM_USUARIO;
+
+    var personagem = sessionStorage.PERSONAGEM_USUARIO;
+
+    if(personagem == 'peralta'){
+        b_personagem.innerHTML =  `<img src="./img/jake.svg" alt="">
+        <p>${sessionStorage.PERSONAGEM_USUARIO}</p>`
+                            
+    } else if(personagem == 'holt'){
+        b_personagem.innerHTML =  `<img src="./img/holt.svg" alt="">
+        <p>${sessionStorage.PERSONAGEM_USUARIO}</p>`
+    } else if(personagem == 'amy'){
+        b_personagem.innerHTML =  `<img src="./img/amy.svg" alt="">
+        <p>${sessionStorage.PERSONAGEM_USUARIO}</p>`
+    } else if(personagem == 'terry'){
+        b_personagem.innerHTML =  `<img src="./img/terry.svg" alt="">
+        <p>${sessionStorage.PERSONAGEM_USUARIO}</p>`
+    } else if(personagem == 'rosa'){
+        b_personagem.innerHTML =  `<img src="./img/rosa.svg" alt="">
+        <p>${sessionStorage.PERSONAGEM_USUARIO}</p>`
+    } else if(personagem == 'boyle'){
+        b_personagem.innerHTML =  `<img src="./img/boyle.svg" alt="">
+        <p>${sessionStorage.PERSONAGEM_USUARIO}</p>`
+    } else if(personagem == 'gina'){
+        b_personagem.innerHTML =  ` <img src="./img/gina.svg" alt="">
+        <p>${sessionStorage.PERSONAGEM_USUARIO}</p>`
+    }
+    
+</script>

@@ -75,10 +75,11 @@
                         <option value="">---</option>
                         <option value="amy">Amy Santiago</option>
                         <option value="boyle">Charles Boyle</option>
+                        <option value="gina">Gina Linette</option>
                         <option value="peralta">Jake Peralta</option>
                         <option value="holt">Raymond Holt</option>
                         <option value="rosa">Rosa Dias</option>
-                        <option value="terry">Terry Jeford</option>
+                        <option value="terry">Terry Jeford</option>           
                     </select>
                 </label>
                 <button onclick="cadastrar()" class="submit">Cadastrar</button>
@@ -145,11 +146,9 @@
 
             if (resposta.ok) {
                 console.log("Cadastro feito")
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-                 setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
+                    window.location = "/login.html";
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }

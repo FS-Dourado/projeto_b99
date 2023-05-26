@@ -99,11 +99,14 @@
 
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.NICKNAME_USUARIO = json.nickname;
+                    sessionStorage.PERSONAGEM_USUARIO = json.personagem;
                     sessionStorage.ID_USUARIO = json.id;
+                    
 
-                    setTimeout(function () {
-                        window.location = "./home.html";
-                    }, 1000); // apenas para exibir o loading
+                  
+                    window.location = "home.html";
+                     // apenas para exibir o loading
 
                 });
 

@@ -4,13 +4,18 @@ function validarSessao() {
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var nickname = sessionStorage.NICKNAME_USUARIO;
+    var personagem = sessionStorage.PERSONAGEM_USUARIO;
 
     var b_usuario = document.getElementById("b_usuario");
-    var b_cpf = document.getElementById("b_cpf");
+    var b_nickname = document.getElementById("b_nickname");
+    var b_personagem = document.getElementById("b_personagem");
 
     if (email != null && nome != null) {
         // window.alert(`Seja bem-vindo, ${nome}!`);
         b_usuario.innerHTML = nome;
+        b_nickname.innerHTML = nickname;
+        b_personagem.innerHTML = personagem;
         // finalizarAguardar();
     } else {
         window.location = "../login.html";
