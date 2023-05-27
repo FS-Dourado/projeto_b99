@@ -103,9 +103,40 @@ function cadastrar(req, res) {
     }
 }
 
+
+function avaliar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var estrelas = req.body.estrelasServer;
+    var fkUsuario = req.body.fkUsuarioServer;
+
+    // Faça as validações dos valores
+    if (estrelas == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.avaliar(estrelas, fkUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    avaliar,
     testar
 }

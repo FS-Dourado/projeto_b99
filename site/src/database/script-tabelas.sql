@@ -11,4 +11,12 @@ CREATE TABLE usuario(
     personagem VARCHAR(45)
 );
 
+CREATE TABLE avaliacao(
+	idAvaliacao INT PRIMARY KEY auto_increment,
+    qtd_estrelas INT,
+    fkUsuario INT,
+    constraint fkUsuario FOREIGN KEY (fkUsuario) references usuario(idUsuario)
+);
+
 SELECT * FROM usuario;
+SELECT * FROM avaliacao;

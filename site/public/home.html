@@ -65,7 +65,7 @@
           </a>
         </li>
         <li>
-          <a href="" class="logout">
+          <a href="./index.html" class="logout">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-item">Log Out</span>
           </a>
@@ -78,40 +78,40 @@
           <h4>Avaliar a série</h4>
         </div>
         <div class="rating">
-          <input value="star-1" name="star-radio" id="star-1" type="radio">
-          <label for="star-1">
+          <input name="star-radio" id="star1" type="radio">
+          <label for="star1">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
               <path
                 d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
                 pathLength="360"></path>
             </svg>
           </label>
-          <input value="star-1" name="star-radio" id="star-2" type="radio">
-          <label for="star-2">
+          <input name="star-radio" id="star2" type="radio">
+          <label for="star2">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
               <path
                 d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
                 pathLength="360"></path>
             </svg>
           </label>
-          <input value="star-1" name="star-radio" id="star-3" type="radio">
-          <label for="star-3">
+          <input name="star-radio" id="star3" type="radio">
+          <label for="star3">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
               <path
                 d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
                 pathLength="360"></path>
             </svg>
           </label>
-          <input value="star-1" name="star-radio" id="star-4" type="radio">
-          <label for="star-4">
+          <input name="star-radio" id="star4" type="radio">
+          <label for="star4">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
               <path
                 d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
                 pathLength="360"></path>
             </svg>
           </label>
-          <input value="star-1" name="star-radio" id="star-5" type="radio">
-          <label for="star-5">
+          <input name="star-radio" id="star5" type="radio">
+          <label for="star5">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
               <path
                 d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
@@ -185,6 +185,74 @@
 </html>
 
 <script>
+
+  function avaliar(){
+    var fkUsuario = sessionStorage.ID_USUARIO;
+    var estrela1 = star1.value;
+    var estrela2 = star2.value;
+    var estrela3 = star3.value;
+    var estrela4 = star4.value;
+    var estrela5 = star5.value;
+    var qtd_estrelas = 0;
+
+    if(estrela1 == 1){
+      qtd_estrelas = 1;
+    } else if(estrela1 == 1 && estrela2 == 1){
+      qtd_estrelas = 2;
+    } else if(estrela1 == 1 && estrela2 == 1 && estrela3 == 1){
+      qtd_estrelas = 3;
+    } else if(estrela1 == 1 && estrela2 == 1 && estrela3 == 1 && estrela4 == 1){
+      qtd_estrelas = 4;
+    } else if(estrela1 == 1 && estrela2 == 1 && estrela3 == 1 && estrela4 == 1 && estrela5 == 1){
+      qtd_estrelas = 5;
+    }
+
+    fetch("/usuarios/avaliar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                estrelasServer: qtd_estrelas,
+                fkUsuarioServer: fkUsuario,
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.ESTRELAS_AVALIACAO = json.qtd_estrelas;
+                                       
+
+                  
+                    window.location = "home.html";
+                     // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+  }
+
+  var qtd_estrelas = sessionStorage.ESTRELAS_AVALIACAO; 
   /*Gráfico de avaliação*/
   const labels = [
     '1',
@@ -199,7 +267,7 @@
     datasets: [{
       backgroundColor: 'rgb(255,0,0)',
       borderColor: 'rgb(255,0,0)',
-      data: [15, 4, 2, 1, 0],
+      data: [qtd_estrelas],
       label: 'Avaliação em estrelas'
     },
     ]
