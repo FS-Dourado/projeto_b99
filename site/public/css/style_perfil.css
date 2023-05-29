@@ -6,6 +6,8 @@
 
 
 .perfil .opcoes_lateral{
+    position: fixed;
+    height: 100%;
     width: 20%;
     background-color: gray;
     display: flex;
@@ -57,7 +59,7 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    
+    margin-left: 20%;
 }
 
 .informacoes .votacao{

@@ -18,5 +18,16 @@ CREATE TABLE avaliacao(
     constraint fkUsuario FOREIGN KEY (fkUsuario) references usuario(idUsuario)
 );
 
+CREATE TABLE quiz(
+	idUsuario INT PRIMARY KEY auto_increment,
+    tema VARCHAR(45),
+    pontos INT,
+    fkUsuario INT,
+    constraint fkUsuarioQuiz FOREIGN KEY (fkUsuario) references Usuario(idUsuario)
+);
+
 SELECT * FROM usuario;
 SELECT * FROM avaliacao;
+
+INSERT INTO avaliacao(qtd_estrelas) VALUES
+	(5);

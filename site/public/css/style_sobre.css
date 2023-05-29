@@ -113,12 +113,10 @@ button{
 }
 .card {
     width: 15%;
-    height: 254px;
+    height: 50%;
     border-radius: 30px;
     background: transparent;
     margin-left: 5%;
-    box-shadow: 15px 15px 30px rgb(25, 25, 25),
-                -15px -15px 30px rgb(60, 60, 60);
     cursor: pointer;
    }
 
