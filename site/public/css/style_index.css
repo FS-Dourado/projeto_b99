@@ -131,6 +131,15 @@
   margin-left: 5%;
 }
 
+.container .img_quiz {
+  margin-top: 5%;
+  width: 80%;
+  margin-left: 5%;
+}
+.img_quiz .quiz {
+  width: 100%;
+}
+
 .container h4 {
   color: #FFC700;
   font-weight: bold;
@@ -142,7 +151,7 @@
 
 .container .parte_resumo {
   width: 80%;
-  margin-left: 10%;
+  margin-left: 2%;
   margin-bottom: 5%;
 }
 

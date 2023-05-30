@@ -87,6 +87,18 @@ a{
     padding: 10px;
 }
 
+
+.sair{
+    position: relative;
+    color: rgb(85,83,83);
+    background-color: transparent;
+    font-size: 14px;
+    display: flex;
+    width: 250px;
+    padding: 10px;
+    cursor: pointer;
+}
+
 .fas{
     position: relative;
     width: 70px;

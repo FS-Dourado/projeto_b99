@@ -86,6 +86,7 @@
                 </label>
                 <button onclick="cadastrar()" class="submit">Cadastrar</button>
                 <p class="signin">Já tem uma conta? <a href="./login.html">Login</a> </p>
+                <div id="div_erro"></div>
 
                 
             </div>  
@@ -121,11 +122,12 @@
         personagem_fav.value = ``;
 
         if (nomeVar == "" || sobrenomeVar == "" || nicknameVar == "" || emailVar == "" || senhaVar == "" || confirmarSenhaVar == "" ||  personagemVar == "") {
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
+            div_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             return false;
-        }
-        else {
+        } else if(!emailVar.includes("@")){
+        div_erro.innerHTML = "Seu email deve conter @"
+        return false;
+        } else {
            // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
             method: "POST",

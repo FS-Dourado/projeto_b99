@@ -16,6 +16,51 @@
     border-radius: 10px;
     margin-left: 5%;
     background-color: gray;
+    border: solid 2px #FFC700;
+}
+
+.conteudo_quiz #quiz{
+    margin-top: 5%;
+    padding-top: 10%;
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+#resultado {
+    margin-top: 5%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+#resultado p {
+    margin-top: 15%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+#resultado .fechar{
+    width: 20%;
+    font-weight: bold;
+    background-color: #FFC700; 
+    margin-top: 10%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .quiz h1{
@@ -25,7 +70,7 @@
 
 .quiz #question{
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 2%;
     margin-top: 5%;
 }
@@ -33,6 +78,7 @@
 .quiz #options{
     color: white;
     margin-top: 5%;
+    font-size: 15px;
 }
 
 .quiz button{

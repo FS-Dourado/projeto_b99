@@ -111,6 +111,8 @@ header .container {
 }
 
 
+
+
 .navbar ul ul {
     position: absolute;
     visibility: hidden;
@@ -128,6 +130,7 @@ header .container {
      transform: scale(1.2);
 }
 
+
 .navbar ul ul li {
     float: left;
     width: 100%;
@@ -140,6 +143,8 @@ header .container {
 .navbar ul ul li a {
     background-color: transparent;
 }
+
+
 
 /* Rodape / Footer */
 .footer {

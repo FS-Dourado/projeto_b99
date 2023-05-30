@@ -72,6 +72,11 @@
     padding-bottom: 3%;
 }
 
+.foto_temas .esquadrao{
+    width: 70%;
+    padding-top: 8%;
+}
+
 .pontos{
     width: 50%;
     display: flex;
@@ -98,7 +103,7 @@
     padding-right: 4%;
 }
 
-.tempo button{
+.tempo a{
     border: none;
     background-color: #FFC700;
     width: 30%;

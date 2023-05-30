@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="./css/style_menu_home.css">
     <link rel="stylesheet" href="./css/style_quiz.css">
+    <script src="./js/funcoes.js"></script>
     <title>B99 | Quiz</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="./home.html">
                   <i class="fas fa-home"></i>
                   <span class="nav-item">Home</span>
                 </a>
@@ -32,7 +33,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="./quiz.html">
                   <i class="fas fa-trophy"></i>
                   <span class="nav-item">Quiz</span>
                 </a>
@@ -44,7 +45,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="./votacao.html">
                   <i class="fas fa-check-to-slot"></i>
                   <span class="nav-item">Votação</span>
                 </a>
@@ -56,10 +57,10 @@
                 </a>
               </li>
               <li>
-                <a href="./index.html" class="logout">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span class="nav-item">Log Out</span>
-                </a>
+                <div onclick="limparSessao()" class="logout sair">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-item">Log Out</span>
+                  </div>
               </li>
             </ul>
           </nav>
@@ -71,7 +72,7 @@
                         <div class="conteudo_quiz">
                             <div class="parte_foto">
                                 <p class="foto_temas">
-                                    <img src="./img/gina.svg" alt="">
+                                    <img class="esquadrao" src="./img/esquadrao.svg" alt="">
                                 </p>
                             </div>
                             <div class="pontos">
@@ -79,7 +80,7 @@
                                     <p>Responda questões gerais e mostre que é fã da série.</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a href="./quiz/geral.html" class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>
@@ -97,7 +98,7 @@
                                     <p>Responda questões sobre Jake e mostre que é fã dele.</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>
@@ -117,7 +118,7 @@
                                     <p>Responda questões sobre Holt e mostre que é fã dele.</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>
@@ -135,7 +136,7 @@
                                     <p>Responda questões sobre Amy e mostre que é fã dela.</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>
@@ -155,7 +156,7 @@
                                     <p>Responda questões sobre Terry e mostre que é fã dele.</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>
@@ -173,7 +174,7 @@
                                     <p>Responda questões sobre Rosa e mostre que é fã dela.</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>
@@ -193,7 +194,7 @@
                                     <p>Responda questões sobre Boyle e mostre que é fã dele.</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>
@@ -211,7 +212,7 @@
                                     <p>Responda questões sobre Gina e mostre que é fã dela</p>
                                 </div>
                                 <div class="tempo">
-                                    <button>JOGAR</button>
+                                    <a class="jogar">JOGAR</a>
                                 </div>   
                             </div>
                         </div>

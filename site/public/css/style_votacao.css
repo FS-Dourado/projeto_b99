@@ -1,0 +1,14 @@
+.votacao{
+    width: 85%;
+    margin-left: 15%;
+    border: solid 2px yellow;
+    display: flex;
+    flex-direction: column;
+}
+
+.votacao .hallowen{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+

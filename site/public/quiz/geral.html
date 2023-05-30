@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/style_menu_home.css">
     <link rel="stylesheet" href="../css/style_geral_quiz.css">
+    <script src="./js/funcoes.js"></script>
   <title>B99 | Geral</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="../home.html">
                   <i class="fas fa-home"></i>
                   <span class="nav-item">Home</span>
                 </a>
@@ -32,7 +33,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="../quiz.html">
                   <i class="fas fa-trophy"></i>
                   <span class="nav-item">Quiz</span>
                 </a>
@@ -44,7 +45,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="../votacao.html">
                   <i class="fas fa-check-to-slot"></i>
                   <span class="nav-item">Votação</span>
                 </a>
@@ -58,7 +59,7 @@
               <li>
                 <a href="./index.html" class="logout">
                   <i class="fas fa-sign-out-alt"></i>
-                  <span class="nav-item">Log Out</span>
+                  <span onclick="limparSessao()" class="nav-item">Log Out</span>
                 </a>
               </li>
             </ul>
@@ -69,7 +70,7 @@
                 <h1>Quiz - Geral</h1>
                     <div id="question"></div>
                     <div id="options"></div>
-                    <button onclick="checkAnswer()">Enviar</button>
+                    <button onclick="ChecarResposta()">Enviar</button>
                     <p id="result"></p>
                 </div>
             </div>
@@ -190,7 +191,7 @@
       }
     ];
 
-    function displayQuestion() {
+    function MostrarQuestao() {
       var questionElement = document.getElementById("question");
       var optionsElement = document.getElementById("options");
 
@@ -212,7 +213,7 @@
       }
     }
 
-    function checkAnswer() {
+    function ChecarResposta() {
       var answer = document.querySelector('input[name="answer"]:checked');
 
       if (answer) {
@@ -224,16 +225,17 @@
         currentQuestion++;
 
         if (currentQuestion < questions.length) {
-          displayQuestion();
+          MostrarQuestao();
         } else {
-          showResult();
+          MostrarResultado();
         }
       }
     }
 
-    function showResult() {
-      quiz.innerHTML = `<div class="quiz">Você acertou ${score} de ${questions.length} perguntas.</div>`;
+    function MostrarResultado() {
+      quiz.innerHTML = `<div id="resultado"><p>Você acertou ${score} de ${questions.length} perguntas.<p>
+                        <a class="fechar" href="../quiz.html">Fechar</a></div>`;
     }
 
-    displayQuestion();
+    MostrarQuestao();
   </script>
