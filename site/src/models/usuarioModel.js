@@ -43,10 +43,23 @@ function avaliar(estrelas, fkUsuario) {
     return database.executar(instrucao);
 }
 
+function verificar_email(email) {
+    var instrucao = `SELECT * FROM usuario WHERE email = '${email}'`;
+    console.log("Executando verificação de e-mail: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function verificar_nickname(nickname) {
+    var instrucao = `SELECT * FROM usuario WHERE nickname = '${nickname}'`;
+    console.log("Executando verificação de e-mail: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    verificar_email,
+    verificar_nickname,
     avaliar
 };

@@ -24,4 +24,12 @@ router.post("/avaliar", function (req, res) {
     usuarioController.avaliar(req, res);
 });
 
+router.post("/verificar_email", function (req, res) {
+    usuarioController.verificar_email(req, res);
+});
+
+router.post("/verificar_nickname", function (req, res) {
+    usuarioController.verificar_nickname(req, res);
+});
+
 module.exports = router;

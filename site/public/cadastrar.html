@@ -102,16 +102,14 @@
 </html>
 <script>
     function cadastrar() {
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var nomeVar = nome_input.value;
-        var sobrenomeVar = sobrenome_input.value;
-        var nicknameVar = nickname_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var confirmarSenhaVar = confirmar_senha_input.value;
-        var personagemVar = personagem_fav.value;
+    var nomeVar = nome_input.value;
+    var sobrenomeVar = sobrenome_input.value;
+    var nicknameVar = nickname_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmarsenhaVar = confirmar_senha_input.value;
+    var personagemfavVar = personagem_fav.value; 
+    const spanErro = document.getElementById("span_erro")
 
         nome_input.value = ``;
         sobrenome_input.value = ``;
@@ -121,52 +119,84 @@
         confirmar_senha_input.value = ``;
         personagem_fav.value = ``;
 
-        if (nomeVar == "" || sobrenomeVar == "" || nicknameVar == "" || emailVar == "" || senhaVar == "" || confirmarSenhaVar == "" ||  personagemVar == "") {
-            div_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            return false;
-        } else if(!emailVar.includes("@")){
-        div_erro.innerHTML = "Seu email deve conter @"
-        return false;
-        } else {
-           // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                sobrenomeServer: sobrenomeVar,
-                nicknameServer: nicknameVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                personagemServer: personagemVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                console.log("Cadastro feito")
-
-                    window.location = "/login.html";
-
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-           
-        });
-
+    if (nomeVar === "" || sobrenomeVar == "" || emailVar === "" || senhaVar === "" || confirmarsenhaVar == "" || personagemfavVar == "") {
+      div_erro.innerHTML = `Campos inválidos`;
+    } else if(!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")){
+        div_erro.innerHTML = `Email inválido`;
+    } else if(senhaVar.length <= 6){
+        div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
+    } else if(confirmarsenhaVar != senhaVar){
+        div_erro.innerHTML = `Senhas inválidas`;
+    }else {
+      verificar_email(emailVar, function (error, emailCadastrado) {
+        if (error) {
+          console.error(error);
+          return;
         }
 
-        
-        return false;
+        if (emailCadastrado) {
+          spanErro.style.display = "block";
+          spanErro.innerHTML = "O email já está cadastrado.";
+        } else {
+          fetch("/usuarios/cadastrar_funcionario", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              nomeServer: nomeVar,
+              sobrenomeServer: sobrenomeVar,
+              nicknameServer: nicknameVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar,
+              personagemServer: personagemfavVar
+            })
+          })
+            .then(function (resposta) {
+              if (resposta.ok) {
+                setTimeout(function () {
+                  console.log("Cadastrado")
+                }, 500);
+
+                limparSessao();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
+
+          return false;
+        }
+      });
     }
+  }
 
-    
-
+  function verificar_email(email, callback) {
+    fetch("/usuarios/verificar_email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: email
+      })
+    })
+      .then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erro na verificação do e-mail");
+        }
+      })
+      .then(function (data) {
+        callback(null, data.emailCadastrado);
+      })
+      .catch(function (error) {
+       div_erro.innerHTML = `Email já cadastrado`;
+        callback(error);
+      });
+  }    
+  
 </script>

@@ -133,10 +133,62 @@ function avaliar(req, res) {
     }
 }
 
+function verificar_email(req, res) {
+    var email = req.body.emailServer;
+
+    if (email == undefined) {
+        res.status(400).send("O email está indefinido!");
+    } else {
+        usuarioModel.verificar_email(email)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ emailCadastrado: true });
+                } else {
+                    res.json({ emailCadastrado: false });
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao verificar o email! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+function verificar_nickname(req, res) {
+    var nickname = req.body.nicknameServer;
+
+    if (nickname == undefined) {
+        res.status(400).send("O nickname está indefinido!");
+    } else {
+        usuarioModel.verificar_nickname(nickname)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ nicknameCadastrado: true });
+                } else {
+                    res.json({ nicknameCadastrado: false });
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao verificar o nickname! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     avaliar,
+    verificar_email,
+    verificar_nickname,
     testar
 }
