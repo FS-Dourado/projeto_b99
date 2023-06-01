@@ -34,7 +34,7 @@
               </li>
               <li>
                 <a href="../quiz.html">
-                  <i class="fas fa-trophy"></i>
+                  <i class="fas fa-gamepad"></i>
                   <span class="nav-item">Quiz</span>
                 </a>
               </li>
@@ -84,6 +84,7 @@
 <script>
     var currentQuestion = 0;
     var score = 0;
+    var questionErradas = 0;
 
     var questions = [
       {
@@ -220,7 +221,7 @@
         if (parseInt(answer.value) === questions[currentQuestion].answer) {
           score++;
         }
-
+        
         answer.checked = false;
         currentQuestion++;
 
@@ -231,11 +232,83 @@
         }
       }
     }
-
+    
     function MostrarResultado() {
-      quiz.innerHTML = `<div id="resultado"><p>Você acertou ${score} de ${questions.length} perguntas.<p>
-                        <a class="fechar" href="../quiz.html">Fechar</a></div>`;
+      var questionErradas = questions.length - score;
+      quiz.innerHTML = `
+      <div id="resultado">
+        <div class="qtd_perguntas">
+                      <p>Você acertou ${score} de ${questions.length} perguntas. e errou ${questionErradas}<p>
+                      <a class="fechar" href="../quiz.html">Fechar</a>
+        </div>
+      </div>`;
+
+      var pontosErrados = questionErradas;
+      var pontosCertos = score;
+      var tema = "geral"
+      var fkUsuario = sessionStorage.ID_USUARIO;
+
+      if (pontosErrados == "" || pontosCertos == "") {
+           
+           console.log = ("(Campos em brancos)");
+          
+           return false;
+       }
+       else {
+           console.log("Pontos certos: ", pontosCertos);
+           console.log("Pontos errados: ", pontosErrados);
+
+       fetch("/usuarios/cadastrar_pontos", {
+           method: "POST",
+           headers: {
+               "Content-Type": "application/json"
+           },
+           body: JSON.stringify({
+               pontosCertosServer: pontosCertos,
+               pontosErradosServer: pontosErrados,
+               temaServer: tema,
+               fkUsuarioServer: fkUsuario
+           })
+       }).then(function (resposta) {
+           console.log("ESTOU NO THEN DO pontos()!")
+
+           if (resposta.ok) {
+               console.log(resposta);
+
+               resposta.json().then(json => {
+                   console.log(json);
+                   console.log(JSON.stringify(json));
+
+                   sessionStorage.PONTOS_CERTOS = json.pontosCertos;
+                   sessionStorage.PONTOS_ERRADOS = json.pontosErrados;
+                   sessionStorage.TEMA = json.tema;
+                   sessionStorage.ID_QUIZ = json.idQuiz;
+                   
+
+                 
+                  
+               });
+
+           } else {
+
+               console.log("Houve um erro ao tentar realizar o login!");
+
+               resposta.text().then(texto => {
+                   console.log("Erro")
+               });
+           }
+
+       }).catch(function (erro) {
+           console.log("Erro");
+       })
+       }
+
+      
+
+       return false;
+
     }
 
     MostrarQuestao();
+
   </script>

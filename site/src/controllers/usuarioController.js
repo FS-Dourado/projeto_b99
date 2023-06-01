@@ -103,6 +103,40 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrar_pontos(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var pontosCertos = req.body.pontosCertosServer;
+    var pontosErrados = req.body.pontosErradosServer;
+    var tema = req.body.temaServer;
+    var fkUsuario = req.body.fkUsuarioServer;
+
+    // Faça as validações dos valores
+    if (pontosCertos == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (pontosErrados == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (tema == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (fkUsuario == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_pontos(pontosCertos, pontosErrados, tema, fkUsuario)
+            .then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+
 
 function avaliar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -158,30 +192,7 @@ function verificar_email(req, res) {
     }
 }
 
-function verificar_nickname(req, res) {
-    var nickname = req.body.nicknameServer;
 
-    if (nickname == undefined) {
-        res.status(400).send("O nickname está indefinido!");
-    } else {
-        usuarioModel.verificar_nickname(nickname)
-            .then(function (resultado) {
-                if (resultado.length > 0) {
-                    res.json({ nicknameCadastrado: true });
-                } else {
-                    res.json({ nicknameCadastrado: false });
-                }
-            })
-            .catch(function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao verificar o nickname! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            });
-    }
-}
 
 module.exports = {
     entrar,
@@ -189,6 +200,6 @@ module.exports = {
     listar,
     avaliar,
     verificar_email,
-    verificar_nickname,
+    cadastrar_pontos,
     testar
 }

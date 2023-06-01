@@ -55,11 +55,19 @@ function verificar_nickname(nickname) {
     return database.executar(instrucao);
 }
 
+function cadastrar_pontos(pontosCertos, pontosErrados, tema, fkUsuario) {
+    var instrucao = `INSERT INTO quiz (tema, pontosCertos, pontosErrados, fkUsuario) VALUES ('${tema}', '${pontosCertos}', '${pontosErrados}', '${fkUsuario}');`;
+    console.log("Executando verificação de e-mail: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     verificar_email,
     verificar_nickname,
+    cadastrar_pontos,
     avaliar
 };

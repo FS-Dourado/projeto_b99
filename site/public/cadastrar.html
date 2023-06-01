@@ -138,7 +138,7 @@
           spanErro.style.display = "block";
           spanErro.innerHTML = "O email já está cadastrado.";
         } else {
-          fetch("/usuarios/cadastrar_funcionario", {
+          fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

@@ -32,4 +32,9 @@ router.post("/verificar_nickname", function (req, res) {
     usuarioController.verificar_nickname(req, res);
 });
 
+router.post("/cadastrar_pontos", function (req, res) {
+    usuarioController.cadastrar_pontos(req, res);
+});
+
+
 module.exports = router;
