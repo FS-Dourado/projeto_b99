@@ -31,35 +31,11 @@
     margin-bottom: 5%;
 }
 
-.rating {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .rating input {
-    display: none;
-  }
-
-  .rating label {
+.star {
     cursor: pointer;
-    width: 30px;
-    height: 30px;
-    background-image: url('../img/estrela.svg'); /* Substitua 'star.png' pela imagem das estrelas */
-    background-size: cover;
   }
-
-  .rating label:hover,
-  .rating label:hover ~ label,
-  .rating input:checked ~ label {
-    background-image: url('../img/estrela_preenchida.svg'); /* Substitua 'star-filled.png' pela imagem das estrelas preenchidas */
-  }
-
-
-  .star {
-    font-size: 30px;
-    cursor: pointer;
+  .rated {
+    color: orange;
   }
   
 

@@ -78,12 +78,12 @@
         <div class="frase">
           <h4>Avaliar a série</h4>
         </div>
-        <div id="stars">
-          <span class="star" onclick="avaliar(1)">&#9734;</span>
-          <span class="star" onclick="avaliar(2)">&#9734;</span>
-          <span class="star" onclick="avaliar(3)">&#9734;</span>
-          <span class="star" onclick="avaliar(4)">&#9734;</span>
-          <span class="star" onclick="avaliar(5)">&#9734;</span>
+        <div id="rating" class="rating">
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
         </div>
         <button onclick="avaliar_serie()">Avaliar</button>
       </div>
@@ -152,27 +152,29 @@
 
 <script>
 
-var estrelas_serie = 0;
-var stars = document.getElementsByClassName("star");
-var avaliado = false;
+var stars = document.getElementsByClassName('star');
+var qtd_estrelas = 0;
+  // Adiciona o evento de clique em cada estrela
+  for (var i = 0; i < stars.length; i++) {
+    stars[i].addEventListener('click', function() {
+      const value = parseInt(this.getAttribute('data-value'));
+      setRating(value);
+    });
+  }
 
-function avaliar(avaliacao) {
-  if (!avaliado) {
+  // Função para definir a classificação
+  function setRating(value) {
+    // Remove todas as classes 'rated'
     for (var i = 0; i < stars.length; i++) {
-      if (i < avaliacao) {
-        stars[i].innerHTML = "&#9733;"; // Preenche a estrela selecionada
-      } else {
-        stars[i].innerHTML = "&#9734;"; // Estrela vazia
-      }
+      stars[i].classList.remove('rated');
     }
 
-  // Aqui você pode implementar a lógica para salvar a avaliação ou realizar outras ações desejadas
-  console.log("Avaliação: " + avaliacao);
-  estrelas_serie = Number(avaliacao);
-  avaliado = true; 
-}}
-
-
+    // Adiciona a classe 'rated' para as estrelas até o valor selecionado
+    for (let i = 0; i < value; i++) {
+      stars[i].classList.add('rated');
+    }
+  }
+  
 
   function avaliar_serie(){
     var fkUsuario = sessionStorage.ID_USUARIO;

@@ -20,19 +20,8 @@
 }
 
 .conteudo_quiz #quiz{
-    padding-top: 10%;
+    padding-top: 2%;
     margin-bottom: 2%;
-    display: flex;
-    width: 60%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: gray;
-}
-
-#resultado {
-    margin-top: 5%;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -42,16 +31,77 @@
     background-color: gray;
 }
 
+#resultado {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+.graficos_resultado{
+    display: flex;
+    flex-direction: row;
+}
+
 #resultado .qtd_perguntas{
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    border: solid 2px black;    
+    border-right: solid 2px white;    
+}
+
+#resultado .qtd_tempo{
+    display: flex;
+    flex-direction: column;
+    width: 50%;   
+}
+
+.qtd_perguntas .frase{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+}
+
+.qtd_tempo .frase{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+}
+
+.qtd_perguntas .graficos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.qtd_tempo .graficos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #resultado .fechar{
     width: 20%;
     font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #FFC700; 
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 2%;
     border-radius: 5px;
     cursor: pointer;
