@@ -292,6 +292,7 @@
 </html>
 
 <script>
+    var fkUsuarioGeral = sessionStorage.ID_USUARIO;
     atualizar_rankingGeral();
     atualizar_rankingJake();
     atualizar_rankingHolt();
@@ -304,7 +305,7 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
     b_personagem.innerHTML = sessionStorage.PERSONAGEM_USUARIO;
-    var fkUsuarioGeral = sessionStorage.ID_USUARIO;
+    
 
     var personagem = sessionStorage.PERSONAGEM_USUARIO;
 
@@ -339,8 +340,8 @@
     }
     
     function atualizar_rankingGeral() {
-    fetch("/usuarios/atualizar_rankingGeral", {
-        method: 'GET'
+        fetch(`/usuarios/atualizar_perfilGeral/${fkUsuarioGeral}`, { 
+        cache: 'no-store'
     }).then(function (resposta) {
 
         if (resposta.ok) {
@@ -351,9 +352,13 @@
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
+                    
                 if(fkUsuarioGeral == usuario.fkUsuario){
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
                         quiz_geral.innerHTML = `<div class="parte_ranking">
                         <p class="ranking_temas">Ranking</p>
                         <p class="posicao">${i+1}º</p>
@@ -368,27 +373,10 @@
                             <p>28:00</p>
                         </div>   
                     </div>`
-                    }                
-            }
-            for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
-
-                    quiz_geral.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    
                 }
+                    } 
+                }
+
             });
         } else {
             throw ('Houve um erro na API!');
@@ -400,8 +388,8 @@
 }
 
 function atualizar_rankingJake() {
-    fetch("/usuarios/atualizar_rankingJake", {
-        method: 'GET'
+    fetch(`/usuarios/atualizar_perfilJake/${fkUsuarioGeral}`, { 
+        cache: 'no-store'
     }).then(function (resposta) {
 
         if (resposta.ok) {
@@ -412,9 +400,13 @@ function atualizar_rankingJake() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
+                    
                 if(fkUsuarioGeral == usuario.fkUsuario){
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
                         quiz_jake.innerHTML = `<div class="parte_ranking">
                         <p class="ranking_temas">Ranking</p>
                         <p class="posicao">${i+1}º</p>
@@ -429,28 +421,11 @@ function atualizar_rankingJake() {
                             <p>28:00</p>
                         </div>   
                     </div>`
+                }
                     } 
                 }
 
-                for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
 
-                    quiz_jake.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    
-                }
                 
             });
         } else {
@@ -463,8 +438,8 @@ function atualizar_rankingJake() {
 }
 
 function atualizar_rankingHolt() {
-    fetch("/usuarios/atualizar_rankingHolt", {
-        method: 'GET'
+    fetch(`/usuarios/atualizar_perfilHolt/${fkUsuarioGeral}`, { 
+        cache: 'no-store'
     }).then(function (resposta) {
 
         if (resposta.ok) {
@@ -475,10 +450,14 @@ function atualizar_rankingHolt() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
+                    
                 if(fkUsuarioGeral == usuario.fkUsuario){
-                    quiz_holt.innerHTML = `<div class="parte_ranking">
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
+                        quiz_holt.innerHTML = `<div class="parte_ranking">
                         <p class="ranking_temas">Ranking</p>
                         <p class="posicao">${i+1}º</p>
                     </div>
@@ -492,28 +471,11 @@ function atualizar_rankingHolt() {
                             <p>28:00</p>
                         </div>   
                     </div>`
+                }
                     } 
                 }
 
-                for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
 
-                    quiz_holt.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    
-                }
 
             });
         } else {
@@ -526,8 +488,8 @@ function atualizar_rankingHolt() {
 }
 
 function atualizar_rankingAmy() {
-    fetch("/usuarios/atualizar_rankingAmy", {
-        method: 'GET'
+    fetch(`/usuarios/atualizar_perfilAmy/${fkUsuarioGeral}`, { 
+        cache: 'no-store'
     }).then(function (resposta) {
 
         if (resposta.ok) {
@@ -538,9 +500,13 @@ function atualizar_rankingAmy() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
+                    
                 if(fkUsuarioGeral == usuario.fkUsuario){
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
                         quiz_amy.innerHTML = `<div class="parte_ranking">
                         <p class="ranking_temas">Ranking</p>
                         <p class="posicao">${i+1}º</p>
@@ -555,27 +521,11 @@ function atualizar_rankingAmy() {
                             <p>28:00</p>
                         </div>   
                     </div>`
-                    }
                 }
-                for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
+                    } 
+                }
 
-                    quiz_amy.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    
-                }
+            
 
             });
         } else {
@@ -588,9 +538,9 @@ function atualizar_rankingAmy() {
 }
 
 function atualizar_rankingTerry() {
-    fetch("/usuarios/atualizar_rankingTerry", {
-        method: 'GET'
-    }).then(function (resposta) {
+    fetch(`/usuarios/atualizar_perfilTerry/${fkUsuarioGeral}`, 
+    { cache: 'no-store'})
+    .then(function (resposta) {
 
         if (resposta.ok) {
             if (resposta.status == 204) {
@@ -599,10 +549,13 @@ function atualizar_rankingTerry() {
 
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
+                    
                 if(fkUsuarioGeral == usuario.fkUsuario){
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
                         quiz_terry.innerHTML = `<div class="parte_ranking">
                         <p class="ranking_temas">Ranking</p>
                         <p class="posicao">${i+1}º</p>
@@ -617,28 +570,11 @@ function atualizar_rankingTerry() {
                             <p>28:00</p>
                         </div>   
                     </div>`
+                }
                     } 
-
                 }
-                for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
 
-                    quiz_terry.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    
-                }
+                
 
             });
         } else {
@@ -651,8 +587,8 @@ function atualizar_rankingTerry() {
 }
 
 function atualizar_rankingRosa() {
-    fetch("/usuarios/atualizar_rankingRosa", {
-        method: 'GET'
+    fetch(`/usuarios/atualizar_perfilRosa/${fkUsuarioGeral}`, 
+    { cache: 'no-store'
     }).then(function (resposta) {
 
         if (resposta.ok) {
@@ -663,45 +599,31 @@ function atualizar_rankingRosa() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
-                if(fkUsuarioGeral == usuario.fkUsuario){
-                    quiz_rosa.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    } 
-
-                }
-                for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
-
-                    quiz_rosa.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
                     
+                if(fkUsuarioGeral == usuario.fkUsuario){
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
+                        quiz_rosa.innerHTML = `<div class="parte_ranking">
+                        <p class="ranking_temas">Ranking</p>
+                        <p class="posicao">${i+1}º</p>
+                    </div>
+                    <div class="pontos">
+                        <div class="pontuacao">
+                            <p>Pontos:</p>
+                            <p>${usuario.pontos}</p>
+                        </div>
+                        <div class="tempo">
+                            <p>Tempo:</p>
+                            <p>28:00</p>
+                        </div>   
+                    </div>`
                 }
+                    } 
+                }
+
 
             });
         } else {
@@ -714,8 +636,8 @@ function atualizar_rankingRosa() {
 }
 
 function atualizar_rankingBoyle() {
-    fetch("/usuarios/atualizar_rankingBoyle", {
-        method: 'GET'
+    fetch(`/usuarios/atualizar_perfilBoyle/${fkUsuarioGeral}`, { 
+        cache: 'no-store'
     }).then(function (resposta) {
 
         if (resposta.ok) {
@@ -726,9 +648,13 @@ function atualizar_rankingBoyle() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
+                    
                 if(fkUsuarioGeral == usuario.fkUsuario){
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
                         quiz_boyle.innerHTML = `<div class="parte_ranking">
                         <p class="ranking_temas">Ranking</p>
                         <p class="posicao">${i+1}º</p>
@@ -743,28 +669,11 @@ function atualizar_rankingBoyle() {
                             <p>28:00</p>
                         </div>   
                     </div>`
+                }
                     } 
-
                 }
-                for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
 
-                    quiz_boyle.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    
-                }
+                
 
             });
         } else {
@@ -777,8 +686,8 @@ function atualizar_rankingBoyle() {
 }
 
 function atualizar_rankingGina() {
-    fetch("/usuarios/atualizar_rankingGina", {
-        method: 'GET'
+    fetch(`/usuarios/atualizar_perfilGina/${fkUsuarioGeral}`, { 
+        cache: 'no-store'
     }).then(function (resposta) {
 
         if (resposta.ok) {
@@ -789,9 +698,13 @@ function atualizar_rankingGina() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                for(var i = 0; i < 3; i++){
+                var pontosAnteriores = 0;
+                for(var i = 0; i < resposta.length; i++){
                     var usuario = resposta[i];
+                    
                 if(fkUsuarioGeral == usuario.fkUsuario){
+                        if(usuario.pontos >= pontosAnteriores){
+                            pontosAnteriores = usuario.pontos;
                         quiz_gina.innerHTML = `<div class="parte_ranking">
                         <p class="ranking_temas">Ranking</p>
                         <p class="posicao">${i+1}º</p>
@@ -806,27 +719,10 @@ function atualizar_rankingGina() {
                             <p>28:00</p>
                         </div>   
                     </div>`
+                }
                     } 
                 }
-                for (var i = 3; i < resposta.length; i++) {
-                    var usuario = resposta[i];
 
-                    quiz_gina.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i+1}º</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    
-                }
 
             });
         } else {

@@ -196,6 +196,126 @@ function atualizar_rankingGina() {
     return database.executar(instrucao);
 }
 
+function atualizar_perfilGeral() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'geral'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_perfilJake() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'jake'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_perfilHolt() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'holt'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_perfilAmy() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'amy'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_perfilTerry(fkUsuarioGeral) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'terry'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_perfilRosa(fkUsuarioGeral) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'rosa'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_perfilBoyle(fkUsuarioGeral) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'boyle'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_perfilGina(fkUsuarioGeral) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'gina'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -208,6 +328,14 @@ module.exports = {
     atualizar_rankingRosa,
     atualizar_rankingBoyle,
     atualizar_rankingGina,
+    atualizar_perfilAmy,
+    atualizar_perfilJake,
+    atualizar_perfilHolt,
+    atualizar_perfilGeral,
+    atualizar_perfilTerry,
+    atualizar_perfilRosa,
+    atualizar_perfilBoyle,
+    atualizar_perfilGina,
     verificar_email,
     verificar_avaliacao,
     verificar_nickname,

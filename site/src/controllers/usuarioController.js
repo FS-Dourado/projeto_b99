@@ -376,6 +376,158 @@ function atualizar_rankingGina(req, res) {
         );
 }
 
+function atualizar_perfilGeral(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilGeral(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_perfilJake(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilJake(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_perfilHolt(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilHolt(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_perfilAmy(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilAmy(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_perfilTerry(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilTerry(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_perfilRosa(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilRosa(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_perfilBoyle(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilBoyle(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_perfilGina(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.atualizar_perfilGina(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -389,6 +541,14 @@ module.exports = {
     atualizar_rankingRosa,
     atualizar_rankingBoyle,
     atualizar_rankingGina,
+    atualizar_perfilGeral,
+    atualizar_perfilJake,
+    atualizar_perfilHolt,
+    atualizar_perfilAmy,
+    atualizar_perfilTerry,
+    atualizar_perfilRosa,
+    atualizar_perfilBoyle,
+    atualizar_perfilGina,
     verificar_email,
     verificar_avaliacao,
     verificar_personagens,

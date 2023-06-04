@@ -31,20 +31,22 @@ SELECT * FROM usuario;
 SELECT * FROM avaliacao;
 SELECT * FROM quiz;
 INSERT INTO quiz VALUES
-	(null, 'geral', 5, 5, 1);
+	(null, 'holt', 9, 1, 5);
     
 SELECT usuario.nickname as nickname, 
 quiz.pontosCertos AS pontos,
-quiz.tema  FROM quiz JOIN usuario 
+quiz.tema,
+fkUsuario  FROM quiz JOIN usuario 
 ON fkUsuario = idUsuario
-WHERE tema = 'geral'
+WHERE tema = 'amy' and fkUsuario = 5 
 	ORDER BY pontos DESC;
 
 SELECT usuario.nickname as nickname, 
     SUM(quiz.pontosCertos) AS pontos,
-    quiz.tema, FROM quiz JOIN usuario 
+    quiz.tema,
+    fkUsuario FROM quiz JOIN usuario 
     ON fkUsuario = idUsuario
-    WHERE tema = 'holt'
+    WHERE tema = 'geral'
     GROUP BY fkUsuario
 	ORDER BY pontos DESC;
 

@@ -76,4 +76,36 @@ router.get("/atualizar_rankingGina", function (req, res) {
     usuarioController.atualizar_rankingGina(req, res);
 });
 
+router.get("/atualizar_perfilGeral/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilGeral(req, res);
+});
+
+router.get("/atualizar_perfilJake/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilJake(req, res);
+});
+
+router.get("/atualizar_perfilHolt/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilHolt(req, res);
+});
+
+router.get("/atualizar_perfilAmy/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilAmy(req, res);
+});
+
+router.get("/atualizar_perfilTerry/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilTerry(req, res);
+});
+
+router.get("/atualizar_perfilRosa/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilRosa(req, res);
+});
+
+router.get("/atualizar_perfilBoyle/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilBoyle(req, res);
+});
+
+router.get("/atualizar_perfilGina/:fkUsuarioGeral", function (req, res) {
+    usuarioController.atualizar_perfilGina(req, res);
+});
+
 module.exports = router;
