@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style_menu_home.css" />
+    <link rel="stylesheet" href="./css/style_ranking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/funcoes.js"></script>
+    <script src="./js/ranking.js"></script>
+    <title>B99 | Home</title>
+
+    <style>
+        table {
+            width: 300px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+    <div class="conteudo">
+        <nav>
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="./img/logob99.svg" alt="">
+                        <span class="nav-item"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./home.html">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./perfil.html">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-item">Perfil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./quiz.html">
+                        <i class="fas fa-gamepad"></i>
+                        <span class="nav-item">Quiz</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./ranking.html">
+                        <i class="fas fa-trophy"></i>
+                        <span class="nav-item">Ranking</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./votacao.html">
+                        <i class="fas fa-check-to-slot"></i>
+                        <span class="nav-item">Votação</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="nav-item">Sugestão</span>
+                    </a>
+                </li>
+                <li>
+                    <div onclick="limparSessao()" class="logout sair">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Log Out</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="ranking_geral" class="ranking">
+            <div class="lista">
+                <h1>Ranking - Geral</h1>
+                <div id="top3"></div>
+                <div id="demaisColocados"></div>
+            </div>
+            <div class="botoes">
+                <h4>Temas</h4>
+                <button onclick="atualizar_rankingGeral()">Geral</button>
+                <button onclick="atualizar_rankingJake()">Jake</button>
+                <button onclick="atualizar_rankingHolt()">Holt</button>
+                <button onclick="atualizar_rankingAmy()">Amy</button>
+                <button onclick="atualizar_rankingTerry()">Terry</button>
+                <button onclick="atualizar_rankingRosa()">Rosa</button>
+                <button onclick="atualizar_rankingBoyle()">Boyle</button>
+                <button onclick="atualizar_rankingGina()">Gina</button>
+                
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+<!-- <label for="name">Nome:</label> 
+            <input type="text" id="name">
+            <button onclick="addScore()">Adicionar Pontuação</button>
+          
+            <h2>Classificação:</h2>
+            <ol id="ranking"></ol> -->
+<script>
+    atualizar_rankingGeral()
+
+    var fkUsuarioGeral = sessionStorage.ID_USUARIO;
+
+function atualizar_rankingGeral() {
+    fetch("/usuarios/atualizar_rankingGeral", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Geral</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar"> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+}
+
+function atualizar_rankingJake() {
+    fetch("/usuarios/atualizar_rankingJake", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Geral</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    if(fkUsuarioGeral == usuario.fkUsuario){
+                        quiz_geral.innerHTML = `<div class="parte_ranking">
+                        <p class="ranking_temas">Ranking</p>
+                        <p class="posicao">${i}</p>
+                    </div>
+                    <div class="pontos">
+                        <div class="pontuacao">
+                            <p>Pontos:</p>
+                            <p>${usuario.pontos}</p>
+                        </div>
+                        <div class="tempo">
+                            <p>Tempo:</p>
+                            <p>28:00</p>
+                        </div>   
+                    </div>`
+                    }
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar">  ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+
+}
+
+function atualizar_rankingHolt() {
+    fetch("/usuarios/atualizar_rankingHolt", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Holt</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar"> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+
+}
+
+function atualizar_rankingAmy() {
+    fetch("/usuarios/atualizar_rankingAmy", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Amy</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar"> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+
+}
+
+function atualizar_rankingTerry() {
+    fetch("/usuarios/atualizar_rankingTerry", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Terry</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar">  ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+
+}
+
+function atualizar_rankingRosa() {
+    fetch("/usuarios/atualizar_rankingRosa", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Rosa</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar"> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+
+}
+
+function atualizar_rankingBoyle() {
+    fetch("/usuarios/atualizar_rankingBoyle", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Boyle</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar"> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+
+}
+
+function atualizar_rankingGina() {
+    fetch("/usuarios/atualizar_rankingGina", {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                ranking_geral.innerHTML = `
+                                    <div class="lista">
+                                    <h1>Ranking - Gina</h1>
+            <div id="top3"></div>
+            <div id="demaisColocados"></div>
+        </div>
+        <div class="botoes">
+            <h4>Temas</h4>
+            <button onclick="atualizar_rankingGeral()">Geral</button>
+            <button onclick="atualizar_rankingJake()">Jake</button>
+            <button onclick="atualizar_rankingHolt()">Holt</button>
+            <button onclick="atualizar_rankingAmy()">Amy</button>
+            <button onclick="atualizar_rankingTerry()">Terry</button>
+            <button onclick="atualizar_rankingRosa()">Rosa</button>
+            <button onclick="atualizar_rankingBoyle()">Boyle</button>
+            <button onclick="atualizar_rankingGina()">Gina</button>
+        </div>`
+                
+                top3.innerHTML = "";
+                demaisColocados.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var usuario = resposta[i];
+
+                    if(i == 0){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/ouro.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 1){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/prata.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    } else if(i == 2){
+                        top3.innerHTML += `<div class="posicao">
+                    <div class="lugar"> <img src="./img/bronze.svg" alt=""> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                    }
+
+                    
+
+                }
+
+                for (var i = 3; i < resposta.length; i++) {
+                    var usuario = resposta[i];
+
+                    
+                    demaisColocados.innerHTML += `<div class="posicao">
+                    <div class="lugar"> ${i + 1}º ${usuario.nickname}  </div> 
+                    <div class="pontos">  ${usuario.pontos}</div>
+                    </div>`
+                }
+
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+
+}
+    
+</script>

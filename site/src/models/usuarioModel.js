@@ -49,6 +49,12 @@ function verificar_email(email) {
     return database.executar(instrucao);
 }
 
+function verificar_avaliacao(fkUsuario) {
+    var instrucao = `SELECT * FROM avaliacao as avaliacao WHERE fkUsuario = '${fkUsuario}'`;
+    console.log("Executando verificação de qtd_estrelas: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function verificar_nickname(nickname) {
     var instrucao = `SELECT * FROM usuario WHERE nickname = '${nickname}'`;
     console.log("Executando verificação de e-mail: \n" + instrucao);
@@ -61,13 +67,151 @@ function cadastrar_pontos(pontosCertos, pontosErrados, tema, fkUsuario) {
     return database.executar(instrucao);
 }
 
+function verificar_personagens() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT personagem FROM usuario;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingGeral() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'geral'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingJake() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'jake'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingHolt() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'holt'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingAmy() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'amy'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingTerry() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'terry'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingRosa() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'rosa'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingBoyle() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'boyle'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizar_rankingGina() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario.nickname as nickname, 
+    quiz.pontosCertos AS pontos,
+    quiz.tema,
+    fkUsuario  FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'gina'
+	ORDER BY pontos DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    atualizar_rankingGeral,
+    atualizar_rankingJake,
+    atualizar_rankingHolt,
+    atualizar_rankingAmy,
+    atualizar_rankingTerry,
+    atualizar_rankingRosa,
+    atualizar_rankingBoyle,
+    atualizar_rankingGina,
     verificar_email,
+    verificar_avaliacao,
     verificar_nickname,
+    verificar_personagens,
     cadastrar_pontos,
     avaliar
 };

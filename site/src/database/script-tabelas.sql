@@ -10,7 +10,7 @@ CREATE TABLE usuario(
 	senha VARCHAR(45),
     personagem VARCHAR(45)
 );
-
+SELECT personagem FROM usuario;
 CREATE TABLE avaliacao(
 	idAvaliacao INT PRIMARY KEY auto_increment,
     qtd_estrelas INT,
@@ -30,5 +30,23 @@ CREATE TABLE quiz(
 SELECT * FROM usuario;
 SELECT * FROM avaliacao;
 SELECT * FROM quiz;
+INSERT INTO quiz VALUES
+	(null, 'geral', 5, 5, 1);
+    
+SELECT usuario.nickname as nickname, 
+quiz.pontosCertos AS pontos,
+quiz.tema  FROM quiz JOIN usuario 
+ON fkUsuario = idUsuario
+WHERE tema = 'geral'
+	ORDER BY pontos DESC;
+
+SELECT usuario.nickname as nickname, 
+    SUM(quiz.pontosCertos) AS pontos,
+    quiz.tema, FROM quiz JOIN usuario 
+    ON fkUsuario = idUsuario
+    WHERE tema = 'holt'
+    GROUP BY fkUsuario
+	ORDER BY pontos DESC;
+
 INSERT INTO avaliacao(qtd_estrelas) VALUES
 	(5);

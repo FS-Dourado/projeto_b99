@@ -117,34 +117,9 @@
       answer: 3
     },
     {
-      question: "Qual é o lema do capitão Raymond Holt?",
-      options: [
-        "Nine-Nine!",
-        "Disciplina e Ordem",
-        "Peralta, você está demitido!",
-        "Eu sou muito sério"
-      ],
-      answer: 1
-    },
-    {
-      question: "Qual é o nome do melhor amigo de Jake Peralta?",
-      options: [
-        "Charles Boyle",
-        "Terry Jeffords",
-        "Raymond Holt",
-        "Adrian Pimento"
-      ],
-      answer: 0
-    },
-    {
       question: "Quem é o detetive mais antigo da 99?",
       options: ["Jake Peralta", "Terry Jeffords", "Raymond Holt", "Norm Scully"],
       answer: 3
-    },
-    {
-      question: "Em que evento Peralta pediu Amy em casamento?",
-      options: ["Jimmy Jabs", "Hallowen", "Boyle Bingo", "Natal"],
-      answer: 1
     },
     {
       question: "Qual é a famosa música cantada por Jake e os prisioneiros?",
@@ -155,28 +130,12 @@
       answer: 0
     },
     {
-      question: "Quem toma um tiro para salvar a Rosa na 1º Temporada?",
-      options: ["Charles Boyle",
-        "Andrew Pimento",
-        "Terry Jrffords",
-        "Jake Peralta"],
-      answer: 0
-    },
-    {
       question: "Quais são os personagens que foram presos injustamente?",
       options: ["Rosa e Terry",
         "Terry e Amy",
         "Peralta e Rosa",
         "Peralta e Holt"],
       answer: 2
-    },
-    {
-      question: "Quais são os personagens que são mandados para a Flórida?",
-      options: ["Holt e Terry",
-        "Boyle e Peralta",
-        "Peralta e Amy",
-        "Peralta e Holt"],
-      answer: 3
     },
     {
       question: "Quem venceu o 1º Jimmy Jabs?",
@@ -324,13 +283,7 @@
     var tema = "geral"
     var fkUsuario = sessionStorage.ID_USUARIO;
 
-    if (pontosErrados == "" || pontosCertos == "") {
-
-      console.log = ("(Campos em brancos)");
-
-      return false;
-    }
-    else {
+    
       console.log("Pontos certos: ", pontosCertos);
       console.log("Pontos errados: ", pontosErrados);
 
@@ -378,12 +331,6 @@
         console.log("Erro");
       })
     }
-
-
-
-    return false;
-
-  }
 
   MostrarQuestao();
 

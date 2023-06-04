@@ -30,7 +30,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="./home.html">
             <i class="fas fa-home"></i>
             <span class="nav-item">Home</span>
           </a>
@@ -48,7 +48,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="./ranking.html">
             <i class="fas fa-trophy"></i>
             <span class="nav-item">Ranking</span>
           </a>
@@ -152,6 +152,9 @@
 
 <script>
 
+
+var fkUsuario = sessionStorage.ID_USUARIO;
+verificar_avaliacao()
 var stars = document.getElementsByClassName('star');
 var qtd_estrelas = 0;
   // Adiciona o evento de clique em cada estrela
@@ -170,15 +173,17 @@ var qtd_estrelas = 0;
     }
 
     // Adiciona a classe 'rated' para as estrelas até o valor selecionado
-    for (let i = 0; i < value; i++) {
+    for (var i = 0; i < value; i++) {
       stars[i].classList.add('rated');
+      qtd_estrelas = value
+      console.log(qtd_estrelas)
     }
+
   }
   
 
   function avaliar_serie(){
-    var fkUsuario = sessionStorage.ID_USUARIO;
-
+    
  
     fetch("/usuarios/avaliar", {
             method: "POST",
@@ -186,7 +191,7 @@ var qtd_estrelas = 0;
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                estrelasServer: estrelas_serie,
+                estrelasServer: qtd_estrelas,
                 fkUsuarioServer: fkUsuario
             })
         }).then(function (resposta) {
@@ -223,6 +228,66 @@ var qtd_estrelas = 0;
         })
 
         return false;
+  }
+
+  function verificar_avaliacao(){
+    fetch(`/usuarios/verificar_avaliacao/${fkUsuario}`, { cache: 'no-store'})
+    .then(function (resultado) {  
+      console.log("Deu certo2")   
+      if (resultado.ok) {
+        
+                resultado.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    // fetch(`/usuarios/verificar_avaliacao/1`,{
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //           fkUsuarioServer: fkUsuario
+    //         })
+    //     }).then(function (resposta) {
+    //         console.log("ESTOU NO THEN DO entrar()!")
+
+    //         if (resposta.ok) {
+    //             console.log(resposta);
+
+    //             resposta.json().then(json => {
+    //                 console.log(json);
+    //                 console.log(JSON.stringify(json));
+
+    //                 sessionStorage.ESTRELAS_AVALIACAO = json.qtd_estrelas;
+                                       
+              
+
+    //             });
+
+    //         } else {
+
+    //             console.log("Houve um erro ao tentar realizar o login!");
+
+    //             resposta.text().then(texto => {
+    //                 console.error(texto);
+    //                 finalizarAguardar(texto);
+    //             });
+    //         }
+
+    //     }).catch(function (erro) {
+    //         console.log(erro);
+    //     })
+
+
   }
 
 

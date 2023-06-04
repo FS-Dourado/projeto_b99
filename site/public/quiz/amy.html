@@ -324,13 +324,7 @@
     var tema = "geral"
     var fkUsuario = sessionStorage.ID_USUARIO;
 
-    if (pontosErrados == "" || pontosCertos == "") {
 
-      console.log = ("(Campos em brancos)");
-
-      return false;
-    }
-    else {
       console.log("Pontos certos: ", pontosCertos);
       console.log("Pontos errados: ", pontosErrados);
 
@@ -378,12 +372,6 @@
         console.log("Erro");
       })
     }
-
-
-
-    return false;
-
-  }
 
   MostrarQuestao();
 

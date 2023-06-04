@@ -192,14 +192,206 @@ function verificar_email(req, res) {
     }
 }
 
+function verificar_avaliacao(req, res) {
+    var fkUsuario = req.params.fkUsuario;
 
+    if (fkUsuario == undefined) {
+        res.status(400).send("O fkUsuario está indefinido!");
+    } else {
+        usuarioModel.verificar_avaliacao(fkUsuario)
+            .then(function (resultado) {
+                if(resultado){
+                    res.status(200).json(resultado)
+                    console.log("Deu certo controller")
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao verificar os campos! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+function verificar_personagens(req, res) {
+
+    usuarioModel.verificar_personagens()
+            .then(function (resultado) {
+                if(resultado){
+                    console.log("Deu certo")
+                }
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao verificar os campos! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    
+}
+
+function atualizar_rankingGeral(req, res) {
+    usuarioModel.atualizar_rankingGeral()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_rankingJake(req, res) {
+    usuarioModel.atualizar_rankingJake()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_rankingHolt(req, res) {
+    usuarioModel.atualizar_rankingHolt()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_rankingAmy(req, res) {
+    usuarioModel.atualizar_rankingAmy()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_rankingTerry(req, res) {
+    usuarioModel.atualizar_rankingTerry()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_rankingRosa(req, res) {
+    usuarioModel.atualizar_rankingRosa()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_rankingBoyle(req, res) {
+    usuarioModel.atualizar_rankingBoyle()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar_rankingGina(req, res) {
+    usuarioModel.atualizar_rankingGina()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(200).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 module.exports = {
     entrar,
     cadastrar,
     listar,
     avaliar,
+    atualizar_rankingGeral,
+    atualizar_rankingJake,
+    atualizar_rankingHolt,
+    atualizar_rankingAmy,
+    atualizar_rankingTerry,
+    atualizar_rankingRosa,
+    atualizar_rankingBoyle,
+    atualizar_rankingGina,
     verificar_email,
+    verificar_avaliacao,
+    verificar_personagens,
     cadastrar_pontos,
     testar
 }

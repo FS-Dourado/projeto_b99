@@ -91,109 +91,75 @@
   var questionErradas = 0;
 
   var questions = [
-    {
-      question: "Quantas temporadas foram feitas?",
-      options: ["7 temporadas", "8 temporadas", "9 temporadas", "10 temporadas"],
-      answer: 1
-    },
-    {
-      question: "Quem venceu o 3º desafio de Hallowen?",
-      options: ["Jake Peralta", "Raymond Holt", "Gina Linette", "Amy Santiago"],
-      answer: 3
-    },
-    {
-      question: "Quantos filhos Jeffords tem?",
-      options: ["1 filha", "2 gêmeas", "3 filhas", "2 filhos"],
-      answer: 2
-    },
-    {
-      question: "Qual o detetive que é obcecado por comida?",
-      options: ["Charles Boyle", "Norm Scully", "Michael Hitchcock", "Gina Linetti"],
-      answer: 0
-    },
-    {
-      question: "Qual é o nome do capitão da 99?",
-      options: ["Norm Scully", "Terry Jefford", "Jake Peralta", "Raymond Holt"],
-      answer: 3
-    },
-    {
-      question: "Qual é o lema do capitão Raymond Holt?",
-      options: [
-        "Nine-Nine!",
-        "Disciplina e Ordem",
-        "Peralta, você está demitido!",
-        "Eu sou muito sério"
-      ],
-      answer: 1
-    },
-    {
-      question: "Qual é o nome do melhor amigo de Jake Peralta?",
-      options: [
-        "Charles Boyle",
-        "Terry Jeffords",
-        "Raymond Holt",
-        "Adrian Pimento"
-      ],
-      answer: 0
-    },
-    {
-      question: "Quem é o detetive mais antigo da 99?",
-      options: ["Jake Peralta", "Terry Jeffords", "Raymond Holt", "Norm Scully"],
-      answer: 3
-    },
-    {
-      question: "Em que evento Peralta pediu Amy em casamento?",
-      options: ["Jimmy Jabs", "Hallowen", "Boyle Bingo", "Natal"],
-      answer: 1
-    },
-    {
-      question: "Qual é a famosa música cantada por Jake e os prisioneiros?",
-      options: ["I Want It That Way",
-        "As Long as You Love Me",
-        "All I Have to Give",
-        "Everbody"],
-      answer: 0
-    },
-    {
+  {
       question: "Quem toma um tiro para salvar a Rosa na 1º Temporada?",
       options: ["Charles Boyle",
         "Andrew Pimento",
-        "Terry Jrffords",
+        "Terry Jesffords",
         "Jake Peralta"],
       answer: 0
     },
     {
-      question: "Quais são os personagens que foram presos injustamente?",
-      options: ["Rosa e Terry",
-        "Terry e Amy",
-        "Peralta e Rosa",
-        "Peralta e Holt"],
-      answer: 2
-    },
-    {
-      question: "Quais são os personagens que são mandados para a Flórida?",
-      options: ["Holt e Terry",
-        "Boyle e Peralta",
-        "Peralta e Amy",
-        "Peralta e Holt"],
-      answer: 3
-    },
-    {
-      question: "Quem venceu o 1º Jimmy Jabs?",
-      options: ["Boyle",
-        "Amy",
-        "Gina",
-        "Terry"],
+      question: "Com quem Rosa tem um caso?",
+      options: ["Jake Peralta", "Adrian Pimento", "Charles Boyle", "Terry Jeffords"],
       answer: 1
     },
     {
-      question: "Qual detetive volta após passar anos na mafia?",
-      options: ["Pimento",
-        "Dudge",
-        "Peralta",
-        "Teddy"],
+      question: "Em uma competição de Halloween, qual foi a fantasia que Rosa usou para vencer?",
+      options: ["Vampiro", "Ladrão", "Coelho", "Bruxa"],
+      answer: 2
+    },
+    {
+      question: "Com quem Rosa fez o pacto de mil flexões?",
+      options: ["Boyle", "Peralta", "Holt", "Marcus"],
+      answer: 1
+    },
+    {
+      question: "Para quem Rosa revelou ser bissexual",
+      options: ["Charles Boyle", "Raymond Holt", "Jake Peralta", "Gina Linette"],
       answer: 0
-    }
+    },
+    {
+      question: "Com quem Rosa tem um caso?",
+      options: [
+        "Marcus",
+        "Pimento",
+        "Jocelyn",
+        "Todas as opções"
+      ],
+      answer: 3
+    },
+    {
+      question: "Qual Hallowen Rosa vence?",
+      options: [
+        "2º Temporada",
+        "5º Temporada",
+        "7º Temporada",
+        "8º Temporada"
+      ],
+      answer: 2
+    },
+    {
+      question: "Rosa namora o sobrinho de quem?",
+      options: ["Jake Peralta", "Terry Jeffords", "Raymond Holt", "Charles Boyle"],
+      answer: 2
+    },
+    {
+      question: "Qual o intuito da força tarefa de Rosa?",
+      options: ["Prender traficantes de k9", 
+              "Prender traficantes de porco risonho",  
+              "Prender traficantes de taxi", 
+              "Prender traficantes de crack"],
+      answer: 1
+    },
+    {
+      question: "Por que Rosa se demite da polícia?",
+      options: ["Virar agente secreta",
+        "Por protesto envolvendo o caso George Floyd",
+        "Ficar infiltrada em uma máfia",
+        "Se aposentar"],
+      answer: 1
+    },
   ];
 
   function MostrarQuestao() {
@@ -324,13 +290,6 @@
     var tema = "rosa"
     var fkUsuario = sessionStorage.ID_USUARIO;
 
-    if (pontosErrados == "" || pontosCertos == "") {
-
-      console.log = ("(Campos em brancos)");
-
-      return false;
-    }
-    else {
       console.log("Pontos certos: ", pontosCertos);
       console.log("Pontos errados: ", pontosErrados);
 
@@ -379,11 +338,6 @@
       })
     }
 
-
-
-    return false;
-
-  }
 
   MostrarQuestao();
 

@@ -6,9 +6,25 @@
     flex-direction: column;
 }
 
-.votacao .hallowen{
-    display: flex;
-    flex-direction: column;
+.votacao .personagens_fav{
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
+.personagens_fav .vote{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-right: solid 2px white;
+}
+
+.personagens_fav .grafico_personagens{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    widows: 50%;
+}

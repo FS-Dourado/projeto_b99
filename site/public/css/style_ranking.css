@@ -1,0 +1,105 @@
+.ranking{
+    width: 85%;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+.ranking .lista{
+    width: 50%;
+    border-radius: 5px;
+    margin-top: 8%;
+    margin-left: 10%;
+    margin-right: 3%;
+    border: solid 2px #FFC700;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista h1{
+    margin-bottom: 5%;
+}
+
+.lista #top3 {
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.lista #demaisColocados {
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+#top3 .posicao{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2%;
+}
+
+#demaisColocados .posicao{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2%;
+}
+
+.posicao .lugar{
+    margin-right: 2%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    padding-left: 2%;
+    background-color: #FFC700;
+    
+}
+
+.lugar img{
+    width: 10%;
+}
+.posicao .pontos{
+    width: 20%;
+    background-color: #FFC700;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranking .botoes{
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 65%;
+    border-left: solid 2px #FFC700;
+    color: #FFC700;
+}
+
+.botoes button{
+    width: 50%;
+    border-radius: 5px;
+    background-color: #FFC700;
+    cursor: pointer;
+    font-size: 15px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
