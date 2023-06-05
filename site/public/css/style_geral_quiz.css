@@ -49,14 +49,7 @@
 #resultado .qtd_perguntas{
     display: flex;
     flex-direction: column;
-    width: 50%;
-    border-right: solid 2px white;    
-}
-
-#resultado .qtd_tempo{
-    display: flex;
-    flex-direction: column;
-    width: 50%;   
+    width: 100%;;    
 }
 
 .qtd_perguntas .frase{

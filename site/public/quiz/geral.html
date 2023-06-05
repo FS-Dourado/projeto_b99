@@ -86,10 +86,13 @@
 </html>
 
 <script>
+  var startTime = 0;
+  var endTime = 0;
+  var totalTime = 0;
   var currentQuestion = 0;
   var score = 0;
   var questionErradas = 0;
-
+  var tempoPergunta = []
   var questions = [
     {
       question: "Quantas temporadas foram feitas?",
@@ -156,6 +159,7 @@
   ];
 
   function MostrarQuestao() {
+    startTime = new Date().getTime();
     var questionElement = document.getElementById("question");
     var optionsElement = document.getElementById("options");
 
@@ -179,7 +183,7 @@
 
   function ChecarResposta() {
     var answer = document.querySelector('input[name="answer"]:checked');
-
+    endTime = new Date().getTime();
     if (answer) {
       if (parseInt(answer.value) === questions[currentQuestion].answer) {
         score++;
@@ -190,6 +194,7 @@
 
       if (currentQuestion < questions.length) {
         MostrarQuestao();
+        
       } else {
         MostrarResultado();
       }
@@ -198,6 +203,13 @@
 
   function MostrarResultado() {
     var questionErradas = questions.length - score;
+    
+    totalTime = (endTime - startTime) / 1000;
+        tempoPergunta = {
+        totalPergunta: totalTime
+      }
+    
+    
     quiz.innerHTML = `<div id="resultado">
       <div class="graficos_resultado">
                     <div class="qtd_perguntas">
@@ -210,15 +222,7 @@
                         </div>
 
                     </div>
-                    <div class="qtd_tempo">
-                        <div class="frase">
-                            <p>Tempo decorrido de cada questão.
-                            <p>
-                        </div>
-                        <div class="grafico">
-                            <canvas id="myChart2"></canvas>
-                        </div>
-                    </div>
+                    
                   </div>
                     <a class="fechar" href="../quiz.html">Voltar</a>
                 </div>`;
@@ -259,7 +263,7 @@
     const data2 = {
       labels: labels2,
       datasets: [{
-        data: [10, 5],
+        data: [],
         backgroundColor: [
           'rgb(54, 162, 235)'
         ],

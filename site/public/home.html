@@ -60,12 +60,6 @@
           </a>
         </li>
         <li>
-          <a href="">
-            <i class="fas fa-question-circle"></i>
-            <span class="nav-item">Sugestão</span>
-          </a>
-        </li>
-        <li>
           <div onclick="limparSessao()" class="logout sair">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-item">Log Out</span>
@@ -73,17 +67,17 @@
         </li>
       </ul>
     </nav>
-    <div class="avaliacao">
-      <div class="avaliar">
+    <!-- <div class="avaliacao">
+       <div id="avaliar" class="avaliar">
         <div class="frase">
           <h4>Avaliar a série</h4>
         </div>
-        <div id="rating" class="rating">
-          <span class="star" data-value="1">&#9733;</span>
-          <span class="star" data-value="2">&#9733;</span>
-          <span class="star" data-value="3">&#9733;</span>
-          <span class="star" data-value="4">&#9733;</span>
-          <span class="star" data-value="5">&#9733;</span>
+        <div class="rating">
+          <span class="star estrela1" data-value="1">&#9733;</span>
+          <span class="star estrela2" data-value="2">&#9733;</span>
+          <span class="star estrela3" data-value="3">&#9733;</span>
+          <span class="star estrela4" data-value="4">&#9733;</span>
+          <span class="star estrela5" data-value="5">&#9733;</span>
         </div>
         <button onclick="avaliar_serie()">Avaliar</button>
       </div>
@@ -96,8 +90,8 @@
         <div class="grafico_serie">
           <canvas id="myChart"></canvas>
         </div>
-      </div>
-    </div>
+      </div> 
+    </div> -->
     <div class="home">
       <div class="metacritic">
         <div class="nome">
@@ -145,6 +139,53 @@
         </div>
       </div>
     </div>
+    <div class="home">
+      <div class="metacritic">
+        <div class="nome">
+          <img src="./img/imdb.svg" alt="">
+         <p> IMDB</p> 
+        </div>
+        <div class="divisoria">
+          <div class="titulo">IMDB <br>
+            Avaliação da IMDB
+          </div>
+          <div class="nota">
+            8,4
+          </div>
+        </div>
+        <div class="divisoria">
+          <div class="titulo"> <br>
+            POPULARIDADE
+          </div>
+          <div class="nota2">
+            140
+          </div>
+        </div>
+      </div>
+
+      <div class="metacritic">
+        <div class="nome">
+          <img src="./img/filmaffinity.svg" alt="">
+         <p> Filmaffinity</p> 
+        </div>
+        <div class="divisoria">
+          <div class="titulo"> <br>
+            Avaliação da Filmaffinity
+          </div>
+          <div class="nota">
+            7.2
+          </div>
+        </div>
+        <div class="divisoria">
+          <div class="titulo"> <br>
+            Ratings
+          </div>
+          <div class="nota2">
+            5,892
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
@@ -153,13 +194,17 @@
 <script>
 
 
-var fkUsuario = sessionStorage.ID_USUARIO;
-verificar_avaliacao()
-var stars = document.getElementsByClassName('star');
-var qtd_estrelas = 0;
+  var fkUsuario = sessionStorage.ID_USUARIO;
+  
+
+  var stars = document.getElementsByClassName('star');
+  var qtd_estrelas = 0;
+  var estrelas_cadastradas = 0;
+  verificar_avaliacao();
+
   // Adiciona o evento de clique em cada estrela
   for (var i = 0; i < stars.length; i++) {
-    stars[i].addEventListener('click', function() {
+    stars[i].addEventListener('click', function () {
       const value = parseInt(this.getAttribute('data-value'));
       setRating(value);
     });
@@ -180,114 +225,72 @@ var qtd_estrelas = 0;
     }
 
   }
-  
 
-  function avaliar_serie(){
-    
  
-    fetch("/usuarios/avaliar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                estrelasServer: qtd_estrelas,
-                fkUsuarioServer: fkUsuario
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+  function verificar_avaliacao() {
+    fetch(`/usuarios/verificar_avaliacao/${fkUsuario}`, { cache: 'no-store' })
+      .then(function (resultado) {
+        console.log("Deu certo2")
+        if (resultado.ok) {
 
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.ESTRELAS_AVALIACAO = json.qtd_estrelas;
-                                       
-
-                  
-                    window.location = "home.html";
-                     // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
+          resultado.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            for(var i = 0; i <resposta.length; i++){
+            estrelas_cadastradas = resposta[i].qtd_estrelas;
             }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
   }
 
-  function verificar_avaliacao(){
-    fetch(`/usuarios/verificar_avaliacao/${fkUsuario}`, { cache: 'no-store'})
-    .then(function (resultado) {  
-      console.log("Deu certo2")   
-      if (resultado.ok) {
-        
-                resultado.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-                    
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    // fetch(`/usuarios/verificar_avaliacao/1`,{
-    //         method: "GET",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //           fkUsuarioServer: fkUsuario
-    //         })
-    //     }).then(function (resposta) {
-    //         console.log("ESTOU NO THEN DO entrar()!")
-
-    //         if (resposta.ok) {
-    //             console.log(resposta);
-
-    //             resposta.json().then(json => {
-    //                 console.log(json);
-    //                 console.log(JSON.stringify(json));
-
-    //                 sessionStorage.ESTRELAS_AVALIACAO = json.qtd_estrelas;
-                                       
-              
-
-    //             });
-
-    //         } else {
-
-    //             console.log("Houve um erro ao tentar realizar o login!");
-
-    //             resposta.text().then(texto => {
-    //                 console.error(texto);
-    //                 finalizarAguardar(texto);
-    //             });
-    //         }
-
-    //     }).catch(function (erro) {
-    //         console.log(erro);
-    //     })
+  function avaliar_serie() {
 
 
+    fetch("/usuarios/avaliar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        estrelasServer: qtd_estrelas,
+        fkUsuarioServer: fkUsuario
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+
+          sessionStorage.ESTRELAS_AVALIACAO = json.qtd_estrelas;
+
+
+
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          finalizarAguardar(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
   }
 
 
@@ -305,7 +308,7 @@ var qtd_estrelas = 0;
     datasets: [{
       backgroundColor: 'rgb(255,0,0)',
       borderColor: 'rgb(255,0,0)',
-      data: [],
+      data: [1],
       label: 'Avaliação em estrelas'
     },
     ]

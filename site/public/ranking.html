@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/funcoes.js"></script>
-    <script src="./js/ranking.js"></script>
     <title>B99 | Home</title>
 
     <style>
@@ -71,12 +70,6 @@
                     <a href="./votacao.html">
                         <i class="fas fa-check-to-slot"></i>
                         <span class="nav-item">Votação</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fas fa-question-circle"></i>
-                        <span class="nav-item">Sugestão</span>
                     </a>
                 </li>
                 <li>
@@ -216,7 +209,7 @@ function atualizar_rankingJake() {
 
                 ranking_geral.innerHTML = `
                                     <div class="lista">
-                                    <h1>Ranking - Geral</h1>
+                                    <h1>Ranking - Jake</h1>
             <div id="top3"></div>
             <div id="demaisColocados"></div>
         </div>
@@ -254,22 +247,6 @@ function atualizar_rankingJake() {
                     </div>`
                     }
 
-                    if(fkUsuarioGeral == usuario.fkUsuario){
-                        quiz_geral.innerHTML = `<div class="parte_ranking">
-                        <p class="ranking_temas">Ranking</p>
-                        <p class="posicao">${i}</p>
-                    </div>
-                    <div class="pontos">
-                        <div class="pontuacao">
-                            <p>Pontos:</p>
-                            <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
-                    </div>`
-                    }
 
                 }
 

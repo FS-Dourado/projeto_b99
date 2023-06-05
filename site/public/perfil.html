@@ -76,15 +76,15 @@
         <div class="perfil">
             <div class="opcoes_lateral">
                 <div class="foto">
-                    <img src="./img/jake.svg">
+                    <img src="./img/avatar.svg">
                 </div>
                 <div class="info_nome">
                     <span id="b_usuario">usuário</span>
                     <span id="b_nickname">nickname</span>
                 </div>
-                <div class="editar">
+                <!-- <div class="editar">
                     <button>Editar Perfil</button>
-                </div>
+                </div> -->
             </div>
             <div class="informacoes">
                 <div class="votacao">
@@ -96,10 +96,10 @@
                         </span>
                     </div>
                     <div class="episodio">
-                        <h4>Episódio Favorito</h4>
+                        <h4>Hallowen Favorito</h4>
                         <span id="b_episodio">
                             <p>--</p>
-
+                            
                         </span>
                     </div>
                 </div>
@@ -119,10 +119,7 @@
                                             <p>Pontos:</p>
                                             <p>--</p>
                                         </div>
-                                        <div class="tempo">
-                                            <p>Tempo:</p>
-                                            <p>28:00</p>
-                                        </div>   
+                                         
                                     </div>
                                 </div>
                             </div>
@@ -140,10 +137,7 @@
                                             <p>Pontos:</p>
                                             <p>--</p>
                                         </div>
-                                        <div class="tempo">
-                                            <p>Tempo:</p>
-                                            <p>28:00</p>
-                                        </div>   
+                                           
                                     </div>
                                 </div>
                             </div>
@@ -163,10 +157,7 @@
                                             <p>Pontos:</p>
                                             <p>--</p>
                                         </div>
-                                        <div class="tempo">
-                                            <p>Tempo:</p>
-                                            <p>28:00</p>
-                                        </div>   
+                                          
                                     </div>
                                 </div>
                             </div>
@@ -184,10 +175,7 @@
                                             <p>Pontos:</p>
                                             <p>--</p>
                                         </div>
-                                        <div class="tempo">
-                                            <p>Tempo:</p>
-                                            <p>28:00</p>
-                                        </div>   
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -207,10 +195,7 @@
                                             <p>Pontos:</p>
                                             <p>--</p>
                                         </div>
-                                        <div class="tempo">
-                                            <p>Tempo:</p>
-                                            <p>28:00</p>
-                                        </div>   
+                                          
                                     </div>
                                 </div>
                             </div>
@@ -251,10 +236,7 @@
                                             <p>Pontos:</p>
                                             <p>--</p>
                                         </div>
-                                        <div class="tempo">
-                                            <p>Tempo:</p>
-                                            <p>28:00</p>
-                                        </div>   
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -272,10 +254,7 @@
                                             <p>Pontos:</p>
                                             <p>--</p>
                                         </div>
-                                        <div class="tempo">
-                                            <p>Tempo:</p>
-                                            <p>28:00</p>
-                                        </div>   
+                                         
                                     </div>
                                 </div>
                             </div>
@@ -301,6 +280,7 @@
     atualizar_rankingRosa();
     atualizar_rankingBoyle();
     atualizar_rankingGina();
+    episodio_hallowen();
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_nickname.innerHTML = sessionStorage.NICKNAME_USUARIO;
@@ -367,10 +347,6 @@
                         <div class="pontuacao">
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
                         </div>   
                     </div>`
                 }
@@ -415,11 +391,7 @@ function atualizar_rankingJake() {
                         <div class="pontuacao">
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
+                        </div> 
                     </div>`
                 }
                     } 
@@ -466,10 +438,6 @@ function atualizar_rankingHolt() {
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
                         </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
                     </div>`
                 }
                     } 
@@ -515,11 +483,7 @@ function atualizar_rankingAmy() {
                         <div class="pontuacao">
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
+                        </div>  
                     </div>`
                 }
                     } 
@@ -565,10 +529,6 @@ function atualizar_rankingTerry() {
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
                         </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
                     </div>`
                 }
                     } 
@@ -614,11 +574,7 @@ function atualizar_rankingRosa() {
                         <div class="pontuacao">
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
+                        </div>  
                     </div>`
                 }
                     } 
@@ -663,11 +619,7 @@ function atualizar_rankingBoyle() {
                         <div class="pontuacao">
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
+                        </div>  
                     </div>`
                 }
                     } 
@@ -713,11 +665,7 @@ function atualizar_rankingGina() {
                         <div class="pontuacao">
                             <p>Pontos:</p>
                             <p>${usuario.pontos}</p>
-                        </div>
-                        <div class="tempo">
-                            <p>Tempo:</p>
-                            <p>28:00</p>
-                        </div>   
+                        </div>  
                     </div>`
                 }
                     } 
@@ -733,4 +681,54 @@ function atualizar_rankingGina() {
 
     });
 }
+
+    function episodio_hallowen(){
+        fetch(`/usuarios/episodio_hallowen/${fkUsuarioGeral}`, {
+        method: 'GET'
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                console.log("nenhuma resposta encontrada")
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                var ep_hallowen = resposta[0].hallowen;
+                if(ep_hallowen == 'hallowen1'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen1.svg" alt="">
+                    1º Hallowen`;
+                } else if(ep_hallowen == 'hallowen2'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen2.svg" alt="">
+                    2º Hallowen`;
+                } else if(ep_hallowen == 'hallowen3'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen3.svg" alt="">
+                    3º Hallowen`
+                } else if(ep_hallowen == 'hallowen4'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen4.svg" alt="">
+                    4º Hallowen`
+                } else if(ep_hallowen == 'hallowen5'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen5.svg" alt="">
+                    5º Hallowen`
+                } else if(ep_hallowen == 'hallowen6'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen6.svg" alt="">
+                    6º Hallowen`
+                } else if(ep_hallowen == 'hallowen7'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen7.svg" alt="">
+                    7º Hallowen`
+                } else if(ep_hallowen == 'hallowen8'){
+                    b_episodio.innerHTML = `<img src="./img/hallowen8.svg" alt="">
+                    8º Hallowen`
+                }
+                
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    });
+    }
 </script>

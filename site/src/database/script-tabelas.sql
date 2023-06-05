@@ -10,14 +10,15 @@ CREATE TABLE usuario(
 	senha VARCHAR(45),
     personagem VARCHAR(45)
 );
-SELECT personagem FROM usuario;
+
+/*
 CREATE TABLE avaliacao(
 	idAvaliacao INT PRIMARY KEY auto_increment,
     qtd_estrelas INT,
     fkUsuario INT,
     constraint fkUsuario FOREIGN KEY (fkUsuario) references usuario(idUsuario)
 );
-
+*/
 CREATE TABLE quiz(
 	idQuiz INT PRIMARY KEY auto_increment,
     tema VARCHAR(45),
@@ -27,11 +28,12 @@ CREATE TABLE quiz(
     constraint fkUsuarioQuiz FOREIGN KEY (fkUsuario) references usuario(idUsuario)
 );
 
+ALTER TABLE usuario ADD COLUMN hallowen VARCHAR(45);
+
 SELECT * FROM usuario;
 SELECT * FROM avaliacao;
 SELECT * FROM quiz;
-INSERT INTO quiz VALUES
-	(null, 'holt', 9, 1, 5);
+
     
 SELECT usuario.nickname as nickname, 
 quiz.pontosCertos AS pontos,
@@ -50,5 +52,9 @@ SELECT usuario.nickname as nickname,
     GROUP BY fkUsuario
 	ORDER BY pontos DESC;
 
-INSERT INTO avaliacao(qtd_estrelas) VALUES
-	(5);
+SELECT hallowen FROM usuario
+where idUsuario = 8;
+
+UPDATE usuario SET personagem = 'Holt'
+WHERE idUsuario = 1;
+

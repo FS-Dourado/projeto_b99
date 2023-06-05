@@ -108,4 +108,28 @@ router.get("/atualizar_perfilGina/:fkUsuarioGeral", function (req, res) {
     usuarioController.atualizar_perfilGina(req, res);
 });
 
+router.get("/graficoPersonagem", function (req, res) {
+    usuarioController.graficoPersonagem(req, res);
+});
+
+router.get("/graficoHallowen", function (req, res) {
+    usuarioController.graficoHallowen(req, res);
+});
+
+router.get("/episodio_hallowen/:fkUsuarioGeral", function (req, res) {
+    usuarioController.episodio_hallowen(req, res);
+});
+
+router.put("/updatePersonagem", function (req, res) {
+    usuarioController.updatePersonagem(req, res);
+});
+
+router.put("/updateHallowen", function (req, res) {
+    usuarioController.updateHallowen(req, res);
+});
+
+router.put("/cadastrar_hallowen", function (req, res) {
+    usuarioController.cadastrar_hallowen(req, res);
+});
+
 module.exports = router;

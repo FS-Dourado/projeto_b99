@@ -528,6 +528,145 @@ function atualizar_perfilGina(req, res) {
         );
 }
 
+function graficoPersonagem(req, res) {
+
+    usuarioModel.graficoPersonagem()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function graficoHallowen(req, res) {
+
+    usuarioModel.graficoHallowen()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function episodio_hallowen(req, res) {
+    fkUsuarioGeral = req.params.fkUsuarioGeral;
+
+    usuarioModel.episodio_hallowen(fkUsuarioGeral)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).json(resultado);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function updatePersonagem(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var selectedPersonagem = req.body.selectedPersonagemServer;
+    var fkUsuario = req.body.fkUsuarioServer;
+
+    // Faça as validações dos valores
+    if (selectedPersonagem == undefined) {
+        res.status(400).send("Seu selected está undefined!");
+    }else if (fkUsuario == undefined) {
+        res.status(400).send("Sua fkUsuario está undefined!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.updatePersonagem(selectedPersonagem, fkUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function updateHallowen(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var selectedHallowen = req.body.selectedHallowenServer;
+    var fkUsuario = req.body.fkUsuarioServer;
+
+    // Faça as validações dos valores
+    if (selectedHallowen == undefined) {
+        res.status(400).send("Seu selected está undefined!");
+    }else if (fkUsuario == undefined) {
+        res.status(400).send("Sua fkUsuario está undefined!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.updateHallowen(selectedHallowen, fkUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrar_hallowen(req, res) {
+    var selectedHallowen = req.body.selectedHallowenServer;
+    var fkUsuario = req.body.fkUsuario;
+
+    if (selectedfkUsuario == undefined) {
+        res.status(400).send("O selected está indefinido!");
+    } else {
+        usuarioModel.cadastrar_hallowen(selectedHallowen, fkUsuario)
+            .then(function (resultado) {
+                console.log("Deu certo")
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao verificar o email! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -549,9 +688,15 @@ module.exports = {
     atualizar_perfilRosa,
     atualizar_perfilBoyle,
     atualizar_perfilGina,
+    graficoPersonagem,
+    graficoHallowen,
+    updatePersonagem,
+    updateHallowen,
+    cadastrar_hallowen,
     verificar_email,
     verificar_avaliacao,
     verificar_personagens,
     cadastrar_pontos,
+    episodio_hallowen,
     testar
 }

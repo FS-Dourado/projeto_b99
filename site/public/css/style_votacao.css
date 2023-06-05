@@ -1,7 +1,7 @@
-.votacao{
+.votacao {
     width: 85%;
     margin-left: 15%;
-    border: solid 2px yellow;
+
     display: flex;
     flex-direction: column;
 }
@@ -10,21 +10,74 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    border-bottom: solid 2px white;
+    
 }
 
 .personagens_fav .vote{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     align-items: center;
     justify-content: center;
     color: white;
     border-right: solid 2px white;
 }
 
-.personagens_fav .grafico_personagens{
+.vote .radio_personagens{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio_personagens .radio_especifica{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio_personagens .linha{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio_especifica img{
+    width: 70%;
+}
+
+.radio_personagens button {
+    background-color: #FFC700;
+    border-radius: 5px;
+    width: 60%;
+    font-weight: bold;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    cursor: pointer;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.grafico_personagens{
     display: flex;
     align-items: center;
     justify-content: center;
-    widows: 50%;
+    width: 60%;
+    border: solid 2x white;
+}
+
+.grafico_personagens .grafico{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grafico #myChart{
+    width: 8100%
+    
 }

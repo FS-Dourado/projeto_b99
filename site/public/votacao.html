@@ -24,7 +24,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="./home.html">
             <i class="fas fa-home"></i>
             <span class="nav-item">Home</span>
           </a>
@@ -37,7 +37,7 @@
         </li>
         <li>
           <a href="./quiz.html">
-            <i class="fas fa-trophy"></i>
+            <i class="fas fa-gamepad"></i>
             <span class="nav-item">Quiz</span>
           </a>
         </li>
@@ -54,12 +54,6 @@
           </a>
         </li>
         <li>
-          <a href="">
-            <i class="fas fa-question-circle"></i>
-            <span class="nav-item">Sugestão</span>
-          </a>
-        </li>
-        <li>
           <div onclick="limparSessao()" class="logout sair">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-item">Log Out</span>
@@ -69,16 +63,100 @@
     </nav>
 
     <div class="votacao">
-        <div class="personagens_fav">
-          <div class="vote">
-            <h4>Personagens Favoritos</h4>
-          </div>
-          <div class="grafico_personagens">
-            <div class="grafico">
-              <canvas id="myChart2"></canvas>
+      <div class="personagens_fav">
+        <div class="vote">
+          <h4>Personagens Favoritos</h4>
+          <div class="radio_personagens">
+            <div class="radio_especifica">
+              <input type="radio" id="personagem1" name="fav_language" value="Peralta">
+              <label for="peralta">Peralta</label><br>
             </div>
+            <div class="radio_especifica">
+              <input type="radio" id="personagem2" name="fav_language" value="Holt">
+              <label for="holt">Holt</label><br>
+            </div>
+            <div class="radio_especifica">
+              <input type="radio" id="personagem3" name="fav_language" value="Amy">
+              <label for="amy">Amy</label>
+            </div>
+            <div class="radio_especifica">
+              <input type="radio" id="personagem4" name="fav_language" value="Terry">
+              <label for="teery">Terry</label>
+            </div>
+            <div class="radio_especifica">
+              <input type="radio" id="personagem5" name="fav_language" value="Rosa">
+              <label for="rosa">Rosa</label>
+            </div>
+            <div class="radio_especifica">
+              <input type="radio" id="personagem6" name="fav_language" value="Boyle">
+              <label for="boyle">Boyle</label>
+            </div>
+            <div class="radio_especifica">
+              <input type="radio" id="personagem7" name="fav_language" value="Gina">
+              <label for="gina">Gina</label>
+            </div>
+            <button onclick="UpdatePersonagem()">Enviar</button>
           </div>
         </div>
+        <div class="grafico_personagens">
+          <div class="grafico">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="personagens_fav">
+        <div class="vote">
+          <h4>Hallowen Favorito</h4>
+          <div class="radio_personagens">
+            <div class="linha">
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen1">
+                <label for="1">1º<img src="./img/hallowen1.svg" alt=""></label>
+              </div>
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen2">
+                <label for="2"> 2º<img src="./img/hallowen2.svg" alt=""></label>
+              </div>
+            </div>
+            <div class="linha">
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen3">
+                <label for="1">3º<img src="./img/hallowen3.svg" alt=""></label>
+              </div>
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen4">
+                <label for="2">4º<img src="./img/hallowen4.svg" alt=""></label>
+              </div>
+            </div>
+            <div class="linha">
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen5">
+                <label for="5">5º<img src="./img/hallowen5.svg" alt=""></label>
+              </div>
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen6">
+                <label for="6">6º<img src="./img/hallowen6.svg" alt=""></label>
+              </div>
+            </div>
+            <div class="linha">
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen8">
+                <label for="1">7º<img src="./img/hallowen7.svg" alt=""></label>
+              </div>
+              <div class="radio_especifica">
+                <input type="radio" id="hallowen" name="fav" value="hallowen8">
+                <label for="2">8º<img src="./img/hallowen8.svg" alt=""></label>
+              </div>
+            </div>
+            <button onclick="cadastro_hallowen()">Enviar</button>
+          </div>
+        </div>
+        <div class="grafico_personagens">
+          <div class="grafico">
+            <canvas id="myChart2"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
@@ -86,30 +164,317 @@
 </html>
 <script>
 
-  const labels2 = [
-    'Acertos',
-    'Erros',
-  ];
+  var selectedPersonagem;
+  var fkUsuario = sessionStorage.ID_USUARIO;
+  graficos();
 
-  const data2 = {
-    labels: labels2,
-    datasets: [{
-      data: [10, 5],
-      backgroundColor: [
-        'rgb(54, 162, 235)'
-      ],
-    },
-    ]
-  };
+  var peralta = 0;
+  var holt = 0;
+  var amy = 0;
+  var terry = 0;
+  var rosa = 0;
+  var boyle = 0;
+  var gina = 0;
 
-  const config2 = {
-    type: 'bar',
-    data: data2,
-    options: {}
-  };
+  var hallowen1 = 0;
+  var hallowen2 = 0;
+  var hallowen3 = 0;
+  var hallowen4 = 0;
+  var hallowen5 = 0;
+  var hallowen6 = 0;
+  var hallowen7= 0;
+  var hallowen8 = 0;
 
-  const myChart2 = new Chart(
-    document.getElementById('myChart2'),
-    config2
-  )
+  function UpdatePersonagem() {
+  // Obtém todas as inputs de rádio
+  var radios = document.getElementsByName("fav_language");
+  
+  // Percorre todas as inputs de rádio
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      selectedPersonagem = radios[i].value;
+      // Aqui você pode enviar "selectedPersonagem" para o banco de dados
+      console.log("Enviar para o banco de dados: " + selectedPersonagem);
+      break; // Para o loop depois de encontrar a opção selecionada
+    }
+  }
+  fetch("/usuarios/updatePersonagem", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          selectedPersonagemServer: selectedPersonagem,
+          fkUsuarioServer: fkUsuario
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO pontos()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            window.location = "votacao.html";
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then(texto => {
+            console.log("Erro")
+          });
+        }
+
+      }).catch(function (erro) {
+        console.log("Erro");
+      })
+    
+}
+
+function cadastro_hallowen() {
+  var radios = document.getElementsByName("fav");
+  var selectedHallowen;
+  // Percorre todas as inputs de rádio
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      selectedHallowen = radios[i].value;
+      // Aqui você pode enviar "selectedPersonagem" para o banco de dados
+      console.log("Enviar para o banco de dados: " + selectedHallowen);
+      break; // Para o loop depois de encontrar a opção selecionada
+    }
+  }
+    
+         fetch("/usuarios/updateHallowen", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          selectedHallowenServer: selectedHallowen,
+          fkUsuarioServer: fkUsuario
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO hallowen()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            
+            sessionStorage.HALLOWEN_USUARIO = json.hallowen;
+
+            window.location = "votacao.html";
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then(texto => {
+            console.log("Erro")
+          });
+        }
+
+      }).catch(function (erro) {
+        console.log("Erro");
+      }) 
+      };
+    
+
+      
+
+  function graficos() {
+
+    fetch(`/usuarios/graficoPersonagem`, {
+      cache: 'no-store'
+    }).then(function (resposta) {
+      if (resposta.ok) {
+
+        resposta.json().then(function (resposta) {
+          console.log(`Dados recebidos: `, resposta);
+          personagens = []
+
+
+          for (var i = 0; i < resposta.length; i++) {
+            var personagem = resposta[i].personagem;
+
+            if (personagem == 'Peralta') {
+              peralta++;
+            } else if (personagem == 'Holt') {
+              holt++;
+            } else if (personagem == 'Amy') {
+              amy++;
+            } else if (personagem == 'Terry') {
+              terry++;
+            } else if (personagem == 'Boyle') {
+              boyle++;
+            } else if (personagem == 'Rosa') {
+              rosa++;
+            } else if (personagem == 'Gina') {
+              gina++;
+            }
+          }
+          const labels = [
+            'Peralta',
+            'Holt',
+            'Amy',
+            'Terry',
+            'Rosa',
+            'Boyle',
+            'Gina',
+          ];
+
+          const data = {
+            labels: labels,
+            datasets: [{
+              data: [peralta, holt, amy, terry, rosa, boyle, gina],
+              backgroundColor: [
+                'red',
+                'blue',
+                'green',
+                'purple',
+                'pink',
+                'yellow',
+                'white'
+
+              ],
+              borderColor: 'rgb(55, 160, 200)',
+            },
+            ]
+          };
+
+          const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+          };
+
+          const myChart2 = new Chart(
+            document.getElementById('myChart'),
+            config
+          )
+
+          // myChart.data.datasets[0].data.push(resposta[i].personagem)
+          // labels.push(resposta[i].data)
+
+
+
+
+
+
+
+        });
+        console.log("Chegamos ao fiim");
+
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+  fetch(`/usuarios/graficoHallowen`, {
+      cache: 'no-store'
+    }).then(function (resposta) {
+      if (resposta.ok) {
+
+        resposta.json().then(function (resposta) {
+          console.log(`Dados recebidos: `, resposta);
+          hallowens = []
+
+
+          for (var i = 0; i < resposta.length; i++) {
+            var hallowen = resposta[i].hallowen;
+
+            if (hallowen == 'hallowen1') {
+              hallowen1++;
+            } else if (hallowen == 'hallowen2') {
+              hallowen2++;
+            } else if (hallowen == 'hallowen3') {
+              hallowen3++;
+            } else if (hallowen == 'hallowen4') {
+              hallowen4++;
+            } else if (hallowen == 'halowen5') {
+              hallowen5++;
+            } else if (hallowen == 'hallowen6') {
+              hallowen6++;
+            } else if (hallowen == 'hallowen7') {
+              hallowen7++;
+            } else if (hallowen == 'hallowen8'){
+              hallowen8++;
+            }
+          }
+          const labels2 = [
+            '1º Hallowen',
+            '2º Hallowen',
+            '3º Hallowen',
+            '4º Hallowen',
+            '5º Hallowen',
+            '6º Hallowen',
+            '7º Hallowen',
+            '8º Hallowen',
+          ];
+
+          const data2 = {
+            labels: labels2,
+            datasets: [{
+              data: [hallowen1, hallowen2, hallowen3, hallowen4, hallowen5, hallowen6, hallowen7, hallowen8],
+              backgroundColor: [
+                'red',
+                'blue',
+                'green',
+                'purple',
+                'pink',
+                'yellow',
+                'white',
+                '#FFC700'
+
+              ],
+              borderColor: 'rgb(55, 160, 200)',
+            },
+            ]
+          };
+
+          const config2 = {
+            type: 'bar',
+            data: data2,
+            options: {}
+          };
+
+          const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+          )
+
+          // myChart.data.datasets[0].data.push(resposta[i].personagem)
+          // labels.push(resposta[i].data)
+
+
+
+
+
+
+
+        });
+        console.log("Chegamos ao fiim");
+
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+
+
 </script>
